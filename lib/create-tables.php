@@ -1,6 +1,6 @@
 <?php
     
-    require ('db-connect.php');
+    require_once ('db-connect.php');
     
     $errorMessage = "Error creating table: ";
     
