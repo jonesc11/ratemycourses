@@ -13,6 +13,7 @@
     $query .= 'permissions int DEFAULT 0,';
     $query .= 'firstname varchar(16) NOT NULL,';
     $query .= 'lastname varchar(16) NOT NULL,';
+    $query .= 'active tinyint DEFAULT 1,';
     $query .= 'PRIMARY KEY(id)';
     $query .= ');';
     
