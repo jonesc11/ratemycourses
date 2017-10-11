@@ -39,11 +39,19 @@
         
         $query  = "INSERT INTO {$dbname}.`users` ";
         $query .= "(`id`, `username`, `password`, `salt`, `email`, `firstname`, `lastname`) VALUES ";
-        $query .= "('$id', '$username', '$password', '$salt', '$email', '$firstname', '$lastname');";
+        $query .= "(:id, :username, :password, :salt, :email, :fname, :lname);";
+        
+        $parameters = array ( ':id' => $id,
+                              ':username' => $username,
+                              ':password' => $password,
+                              ':salt' => $salt,
+                              ':email' => $email,
+                              ':fname' => $firstname,
+                              ':lname' => $lastname );
         
         try {
             $statement = $db->prepare($query);
-            $statement->execute();
+            $statement->execute($parameters);
         } catch (Exception $e) {
             echo $e;
             return FALSE;
@@ -54,6 +62,59 @@
     
     function getErrorMessage($errorKey) {
         
+    }
+    
+    function genCreateForm($array) {
+        if (!is_array($array))
+            throw new Exception ("Input must be an array.");
+        
+        $error = '';
+        $username = '';
+        $email = '';
+        $firstname = '';
+        $lastname = '';
+        
+        if (isset($array['error']))
+            $error = '<div class="alert alert-danger">' . $array['error'] . '</div>';
+        
+        if (isset($array['username']))
+            $username = $array['username'];
+        
+        if (isset($array['email']))
+            $email = $array['email'];
+        
+        if (isset($array['firstname']))
+            $firstname = $array['firstname'];
+        
+        if (isset($array['lastname']))
+            $lastname = $array['lastname'];
+        
+        if ($error != '') {
+            $ret  = $error;
+            $ret .= '<form name="create-account" method="POST">';
+            $ret .= '<input name="username" type="text" value="' . $username . '" placeholder="Username"/>';
+            $ret .= '<input name="firstname" type="text" value="' . $firstname . '" placeholder="First Name"/>';
+            $ret .= '<input name="lastname" type="text" value="' . $lastname . '" placeholder="Last Name"/>';
+            $ret .= '<input name="email" type="text" value="' . $email . '" placeholder="Email"/>';
+            $ret .= '<input name="conf_email" type="text" placeholder="Confirm Email"/>';
+            $ret .= '<input name="password" type="password" placeholder="Password"/>';
+            $ret .= '<input name="conf_password" type="password" placeholder="Confirm Password"/>';
+            $ret .= '</form>';
+            $ret .= '<button class="btn btn-primary" id="submit-create">Submit</button>';
+        } else {
+            $ret .= '<form name="create-account" method="POST">';
+            $ret .= '<input name="username" type="text" value="' . $username . '" placeholder="Username"/>';
+            $ret .= '<input name="firstname" type="text" value="' . $firstname . '" placeholder="First Name"/>';
+            $ret .= '<input name="lastname" type="text" value="' . $lastname . '" placeholder="Last Name"/>';
+            $ret .= '<input name="email" type="text" value="' . $email . '" placeholder="Email"/>';
+            $ret .= '<input name="conf_email" type="text" placeholder="Confirm Email"/>';
+            $ret .= '<input name="password" type="password" placeholder="Password"/>';
+            $ret .= '<input name="conf_password" type="password" placeholder="Confirm Password"/>';
+            $ret .= '</form>';
+            $ret .= '<button class="btn btn-primary" id="submit-create">Submit</button>';
+        }
+        
+        return $ret;
     }
     
 ?>
