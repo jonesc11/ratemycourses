@@ -104,12 +104,19 @@
         $continue = FALSE;
     }
     
+    $emailArray = array('username' => $uname,
+                        'email' => $email,
+                        'firstname' => $fname,
+                        'lastname' => $lname);
+    
     //- Submit the form (using function in auth-helpers.php) and redirect.
     if ($continue) {
-        if (createNewUser($username, $firstname, $lastname, strtolower($email), $password, $db, $dbname))
+        if (createNewUser($username, $firstname, $lastname, strtolower($email), $password, $db, $dbname)) {
+            sendCreateSuccessEmail($emailArray)
             echo '<script>window.location = "' . $successPage . '"</script>';
-        else
+        } else {
             echo '<script>window.location = "' . $successPage . '"</script>';
+        }
     }
     
 ?>
