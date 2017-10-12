@@ -73,6 +73,7 @@
         $email = '';
         $firstname = '';
         $lastname = '';
+        $focus = '';
         
         if (isset($array['error']))
             $error = '<div class="alert alert-danger">' . $array['error'] . '</div>';
@@ -89,27 +90,32 @@
         if (isset($array['lastname']))
             $lastname = $array['lastname'];
         
+        if (isset($array['focus']))
+            $focus = $array['focus'];
+        
         if ($error != '') {
             $ret  = $error;
             $ret .= '<form name="create-account" method="POST">';
-            $ret .= '<input name="username" type="text" value="' . $username . '" placeholder="Username"/>';
-            $ret .= '<input name="firstname" type="text" value="' . $firstname . '" placeholder="First Name"/>';
-            $ret .= '<input name="lastname" type="text" value="' . $lastname . '" placeholder="Last Name"/>';
-            $ret .= '<input name="email" type="text" value="' . $email . '" placeholder="Email"/>';
-            $ret .= '<input name="conf_email" type="text" placeholder="Confirm Email"/>';
-            $ret .= '<input name="password" type="password" placeholder="Password"/>';
-            $ret .= '<input name="conf_password" type="password" placeholder="Confirm Password"/>';
+            $ret .= '<input name="username" type="text" value="' . $username . '" placeholder="Username" required/>';
+            $ret .= '<input name="firstname" type="text" value="' . $firstname . '" placeholder="First Name" required/>';
+            $ret .= '<input name="lastname" type="text" value="' . $lastname . '" placeholder="Last Name" required/>';
+            $ret .= '<input name="email" type="text" value="' . $email . '" placeholder="Email" required/>';
+            $ret .= '<input name="conf_email" type="text" placeholder="Confirm Email" required/>';
+            $ret .= '<input name="password" type="password" placeholder="Password" required/>';
+            $ret .= '<input name="conf_password" type="password" placeholder="Confirm Password required"/>';
+            $ret .= '<input type="hidden" name="focus" value="' . $focus . '"/>';
             $ret .= '</form>';
             $ret .= '<button class="btn btn-primary" id="submit-create">Submit</button>';
         } else {
             $ret .= '<form name="create-account" method="POST">';
-            $ret .= '<input name="username" type="text" value="' . $username . '" placeholder="Username"/>';
-            $ret .= '<input name="firstname" type="text" value="' . $firstname . '" placeholder="First Name"/>';
-            $ret .= '<input name="lastname" type="text" value="' . $lastname . '" placeholder="Last Name"/>';
-            $ret .= '<input name="email" type="text" value="' . $email . '" placeholder="Email"/>';
-            $ret .= '<input name="conf_email" type="text" placeholder="Confirm Email"/>';
-            $ret .= '<input name="password" type="password" placeholder="Password"/>';
-            $ret .= '<input name="conf_password" type="password" placeholder="Confirm Password"/>';
+            $ret .= '<input name="username" type="text" value="' . $username . '" placeholder="Username" required/>';
+            $ret .= '<input name="firstname" type="text" value="' . $firstname . '" placeholder="First Name" required/>';
+            $ret .= '<input name="lastname" type="text" value="' . $lastname . '" placeholder="Last Name" required/>';
+            $ret .= '<input name="email" type="text" value="' . $email . '" placeholder="Email" required/>';
+            $ret .= '<input name="conf_email" type="text" placeholder="Confirm Email" required/>';
+            $ret .= '<input name="password" type="password" placeholder="Password" required/>';
+            $ret .= '<input name="conf_password" type="password" placeholder="Confirm Password" required/>';
+            $ret .= '<input type="hidden" name="focus" value="' . $focus . '"/>';
             $ret .= '</form>';
             $ret .= '<button class="btn btn-primary" id="submit-create">Submit</button>';
         }
