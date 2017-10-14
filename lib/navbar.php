@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<? php require_once('auth_helpers.php'); ?>
 <html>
   <head>
     <meta charset="utf-8">
@@ -66,7 +67,10 @@
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
-          <div class="modal-body" id="sign_up_form">
+          <div class="modal-body">
+            <div id="sign_up_form">
+              <?php echo genCreateForm(array()); ?>
+            </div>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn">Sign up</button>
