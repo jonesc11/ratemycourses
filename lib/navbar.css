@@ -9,6 +9,7 @@
 
 .navbar a {
   color: white;
+  cursor: pointer;
 }
 
 .navbar-nav {
@@ -49,4 +50,16 @@
 
 .btn:hover, .btn:focus {
   background-color: lavender;
+}
+
+.modal-dialog {
+  width: 500px;
+}
+
+#signup .modal-dialog {
+  width: 600px;
+}
+
+.modal-content {
+  padding: 20px;
 }
