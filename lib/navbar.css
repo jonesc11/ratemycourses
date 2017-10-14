@@ -1,0 +1,52 @@
+:root {
+  --purple: #59217c;
+}
+
+.navbar {
+  border-radius: 0px;
+  background-color: var(--purple);
+}
+
+.navbar a {
+  color: white;
+}
+
+.navbar-nav {
+  padding-top: 17px;
+}
+
+.nav-item {
+  margin: 4px;
+}
+
+.form-inline {
+  float: right;
+  padding-top: 8px;
+}
+
+.form-control {
+  width: 82%!important;
+}
+.navbar .btn:hover {
+  background-color: lavender;
+}
+
+.navbar .btn {
+  float: right;
+  background-color: ghostwhite;
+  color: black;
+}
+
+.modal-title {
+  float: left;
+  font-size: 20px;
+}
+
+.btn {
+  background-color: var(--purple);
+  color: white;
+}
+
+.btn:hover, .btn:focus {
+  background-color: lavender;
+}
