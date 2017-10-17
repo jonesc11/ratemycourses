@@ -91,6 +91,34 @@
 		return false;
 	}
 
+	function genLoginForm($array) {
+        if (!is_array($array))
+            throw new Exception ("Input must be an array.");
+        
+        //- Create empty variables.
+        $error = '';
+        $username = '';
+        
+        
+        //- Fill the variables if necessary.
+        if (isset($array['error']))
+            $error = '<div class="alert alert-danger">' . $array['error'] . '</div>';
+        
+        if (isset($array['username']))
+            $username = $array['username'];
+        
+        //- Populate return variable (HTML form)
+   
+		$ret  = $error;
+		$ret .= '<form name="create-account" method="POST">';
+		$ret .= '<input name="username" type="text" value="' . $username . '" placeholder="Username" class="form-control" required/>';
+		$ret .= '<input name="password" type="password" placeholder="Password" class="form-control" required/>';
+		$ret .= '</form>';
+		$ret .= '<button class="btn btn-primary" id="submit-create">Submit</button>';
+
+        return $ret;
+    }
+
 	//Logs in the user if uname or password is correct
 
 	function login($id,$password){
