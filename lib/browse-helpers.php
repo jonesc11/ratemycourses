@@ -60,10 +60,36 @@
     }
     
     /* 
-     * 
+     * Returns a bunch of divs with class 'course' in a div with id 'courses-$majorCode'.
+     * Class names are in a span of class 'course-name', and class identifiers are in a
+     * span with class 'course-identifier'. Gets all the courses under the major code
+     * specified in the parameters.
      */
-    function getNavPerMajor($majorCode) {
+    function getNavPerMajor($majorCode, $db) {
+        $ret .= '';
         
+        //- Execute SQL statement.
+        $statement = $db->prepare('SELECT * FROM `courses` WHERE `major` = :major');
+        $result = $statement->execute(array (':major' => $majorCode));
+        
+        $courses = array();
+        
+        //- Loop through, add to an array of courses with the course number as key
+        $while ($row = $statement->fetch())
+            $courses[$row['coursenum']] = $row;
+        
+        //- Sort the array
+        ksort($courses);
+        
+        //- Print the list of courses into a div.
+        $ret .= '<div id="courses-' . $majorCode . '">';
+        foreach ($courses as $course) {
+            $ret .= '<div class="course"><span class="course-name">' . $course['coursename'] . '</span>';
+            $ret .= '<span class="course-identifier">' . $course['major'] . ' ' . $course['coursenum'] . '</span></div>';
+        }
+        $ret .= '</div>';
+        
+        return $ret;
     }
     
 ?>
