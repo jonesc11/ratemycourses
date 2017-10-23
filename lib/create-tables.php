@@ -30,8 +30,6 @@
     $query .= 'coursename varchar(54) NOT NULL,';
     $query .= 'major varchar(4) NOT NULL,';
     $query .= 'coursenum int NOT NULL,';
-    $query .= 'availability varchar(3) NOT NULL,';
-    $query .= 'commintensive tinyint DEFAULT 0,';
     $query .= 'PRIMARY KEY(id)';
     $query .= ');';
     
