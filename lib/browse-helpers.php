@@ -51,10 +51,19 @@
             $ret .= '<div id="display-' . $code . '">';
             $ret .= '<h2 class="school-name">' . $name . '</h2><ul class="ul-school">';
             foreach ($majors as $majorCode => $majorName) {
-                $ret .= '<li class="li-major"><span class="major-code">' . $majorCode . '</span>' . $majorName . '</li>';
+                $ret .= '<li class="li-major"><a href="/browse/?q=' . $majorCode . '" title="' . $majorName . '"><span class="major-code">' . $majorCode . '</span>' . $majorName . '</a></li>';
             }
             $ret .= '</div>';
         }
+        
+        return $ret;
+    }
+    
+    /* 
+     * 
+     */
+    function getNavPerMajor($majorCode) {
+        
     }
     
 ?>
