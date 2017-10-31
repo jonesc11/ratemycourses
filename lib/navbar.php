@@ -12,19 +12,19 @@
     <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   </head>
   <body>
-    <nav class="navbar navbar-toggleable-md navbar-light">
+    <nav class="navbar navbar-light">
       <a class="navbar-brand" href="#">RateMyCourses</a>
       
-      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-        <div class="navbar-nav">
+      <div id="navbarNavAltMarkup">
+        <div class="navbar-nav" id="menu">
           <a class="nav-item nav-link" href="#">Home</a>
           <a class="nav-item nav-link" href="#">Tips</a>
           <a class="nav-item nav-link" data-toggle="modal" data-target="#login">Login</a>
           <a class="nav-item nav-link hidden" href="#">Logout</a>
           <a class="nav-item nav-link" data-toggle="modal" data-target="#signup">Sign up</a>
         </div>
-        <form class="form-inline col-md-4">
-          <input class="form-control" type="text" placeholder="Search">
+        <form class="form-inline nav navbar-nav navbar-right navbar-right">
+          <input id="search" class="form-control" type="text" placeholder="Search">
           <button class="btn btn-outline-success" type="submit">Search</button>
         </form>
       </div>

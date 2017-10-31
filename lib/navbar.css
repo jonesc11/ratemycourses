@@ -7,27 +7,19 @@
   background-color: var(--purple);
 }
 
+.navbar-brand {
+  margin-right: 10px;
+}
+
 .navbar a {
   color: white;
   cursor: pointer;
-}
-
-.navbar-nav {
-  padding-top: 17px;
 }
 
 .nav-item {
   margin: 4px;
 }
 
-.form-inline {
-  float: right;
-  padding-top: 8px;
-}
-
-.form-control {
-  width: 82%!important;
-}
 .navbar .btn:hover {
   background-color: lavender;
 }
@@ -36,6 +28,7 @@
   float: right;
   background-color: ghostwhite;
   color: black;
+  margin-left: 10px;
 }
 
 .modal-title {
@@ -62,4 +55,23 @@
 
 .modal-content {
   padding: 20px;
+}
+
+.navbar-right {
+  margin-right: 20px;
+}
+
+#menu {
+  float: left;
+  padding-top: 8px;
+  margin-top: 7.5px;
+}
+
+.form-inline {
+  float: right;
+  margin-top: 7.5px;
+}
+#search {
+  float: left;
+  width: 200px;
 }
