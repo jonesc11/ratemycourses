@@ -46,15 +46,11 @@
 }
 
 .modal-dialog {
-  width: 500px;
-}
-
-#signup .modal-dialog {
-  width: 600px;
+  margin: auto;
 }
 
 .modal-content {
-  padding: 20px;
+  padding: 10px;
 }
 
 .navbar-right {
@@ -68,10 +64,41 @@
 }
 
 .form-inline {
-  float: right;
   margin-top: 7.5px;
+  width: 281px;
+  margin: auto;
+  margin-bottom: 10px;
 }
+
 #search {
   float: left;
   width: 200px;
+  margin-bottom: 0px;
+}
+
+.form-control {
+  margin-bottom: 10px;
+}
+
+@media only screen and (min-width: 401px) {
+  .form-inline {
+    float: right;
+    margin-top: 7.5px;
+    margin-bottom: 0px;
+    margin-right: 10px;
+    width: auto;
+  }
+  
+  .modal-dialog {
+    width: 500px;
+    margin-top: 20px;
+  }
+  
+  #sign-up .modal-dialog {
+    width: 600px;
+  }
+  
+  .modal-content {
+    padding: 20px;
+  }
 }
