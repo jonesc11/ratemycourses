@@ -57,11 +57,12 @@
     }
     
     $query  = 'CREATE TABLE comments (';
-    $query .= 'id varchar(16) NOT NULL,';
+    $query .= 'id varchar(8) NOT NULL,';
     $query .= 'courseid varchar(8) NOT NULL,';
     $query .= 'comment varchar(2048) NOT NULL,';
     $query .= 'active tinyint DEFAULT 1,';
-    $query .= 'ratingid varchar(16) NOT NULL,';
+    $query .= 'ratingid varchar(8) NOT NULL,';
+    $query .= 'userid varchar(8) NOT NULL';
     $query .= 'PRIMARY KEY(id)';
     $query .= ');';
     
@@ -74,12 +75,12 @@
     }
     
     $query  = 'CREATE TABLE ratings (';
-    $query .= 'id varchar(16) NOT NULL,';
-    $query .= 'category1 int NOT NULL,';
-    $query .= 'category2 int NOT NULL,';
-    $query .= 'category3 int NOT NULL,';
-    $query .= 'category4 int NOT NULL,';
-    $query .= 'category5 int NOT NULL,';
+    $query .= 'id varchar(8) NOT NULL,';
+    $query .= 'category1 int DEFAULT NULL,';
+    $query .= 'category2 int DEFAULT NULL,';
+    $query .= 'category3 int DEFAULT NULL,';
+    $query .= 'category4 int DEFAULT NULL,';
+    $query .= 'category5 int DEFAULT NULL,';
     $query .= 'PRIMARY KEY(id)';
     $query .= ');';
     
@@ -97,6 +98,7 @@
     $query .= 'major varchar(4) NOT NULL,';
     $query .= 'coursenum int NOT NULL,';
     $query .= 'userid varchar(8) DEFAULT \'FFFFFFFF\',';
+    $query .= 'suggestion varchar(2048) NOT NULL';
     $query .= 'status int DEFAULT 0,';
     $query .= 'PRIMARY KEY(id)';
     $query .= ');';
