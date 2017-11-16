@@ -51,7 +51,7 @@
     }
     
     /**
-     * Takes in an array that must have values courseid, comment, and ratingid. Returns the new comment ID or false.
+     * Takes in an array that must have values courseid, comment, userid, and ratingid. Returns the new comment ID or false.
      */
     function createComment($array) {
         global $db;
@@ -61,8 +61,8 @@
         
         $newId = genNewCommentId();
         
-        $query = "INSERT INTO `comments` (`id`, `courseid`, `comment`, `ratingid`) VALUES (:id, :courseid, :comment, :ratingid);";
-        $param = array (':id' => $newId, ':courseid' => $array['courseid'], ':comment' => $array['comment'], ':ratingid' => $array['ratingid']);
+        $query = "INSERT INTO `comments` (`id`, `courseid`, `comment`, `ratingid`, `userid`) VALUES (:id, :courseid, :comment, :ratingid, :userid);";
+        $param = array (':id' => $newId, ':courseid' => $array['courseid'], ':comment' => $array['comment'], ':ratingid' => $array['ratingid'], ':userid' => $array['userid']);
         
         $statement = $db->prepare($statement);
         $result = $statement->execute($param);
