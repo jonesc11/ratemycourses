@@ -58,11 +58,11 @@
     }
     
     $query  = 'CREATE TABLE comments (';
-    $query .= 'id varchar(16) NOT NULL,';
+    $query .= 'id varchar(8) NOT NULL,';
     $query .= 'courseid varchar(8) NOT NULL,';
     $query .= 'comment varchar(2048) NOT NULL,';
     $query .= 'active tinyint DEFAULT 1,';
-    $query .= 'ratingid varchar(16) NOT NULL,';
+    $query .= 'ratingid varchar(8) NOT NULL,';
     $query .= 'PRIMARY KEY(id)';
     $query .= ');';
     
@@ -75,7 +75,7 @@
     }
     
     $query  = 'CREATE TABLE ratings (';
-    $query .= 'id varchar(16) NOT NULL,';
+    $query .= 'id varchar(8) NOT NULL,';
     $query .= 'category1 int NOT NULL,';
     $query .= 'category2 int NOT NULL,';
     $query .= 'category3 int NOT NULL,';
