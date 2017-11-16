@@ -25,7 +25,10 @@
      * Queries the database and gets the highest ID currently in the database.
      * Returns the next Hex ID.
      */
-    function getNextId($db, $dbname) {
+    function getNextId() {
+        global $db;
+        global $dbname;
+        
         //- Get the IDs (returned in hex)
         $query = "SELECT `id` FROM {$dbname}.`users`;";
         $statement = $db->prepare($query);
@@ -49,7 +52,10 @@
      * Handles the SQL commands to add a user to the database given whatever is submitted to
      * the form. Returns TRUE if successful, FALSE otherwise.
      */
-    function createNewUser($username, $firstname, $lastname, $email, $password, $db, $dbname) {
+    function createNewUser($username, $firstname, $lastname, $email, $password,) {
+        global $db;
+        global $dbname;
+        
         //- Generate the salt and hashed password, get next ID.
         $salt = salt();
         $password = genHashedPassword($password, $salt);
