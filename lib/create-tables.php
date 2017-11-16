@@ -42,9 +42,9 @@
     }
     
     $query  = 'CREATE TABLE votes (';
-    $query .= 'id varchar(24) NOT NULL,';
+    $query .= 'id varchar(8) NOT NULL,';
     $query .= 'vote int NOT NULL,';
-    $query .= 'commentid varchar(16) NOT NULL,';
+    $query .= 'commentid varchar(8) NOT NULL,';
     $query .= 'PRIMARY KEY(id)';
     $query .= ');';
     
@@ -94,7 +94,6 @@
     
     $query  = 'CREATE TABLE suggestions (';
     $query .= 'id varchar(8) NOT NULL,';
-    $query .= 'coursename varchar(54) NOT NULL,';
     $query .= 'major varchar(4) NOT NULL,';
     $query .= 'coursenum int NOT NULL,';
     $query .= 'userid varchar(8) DEFAULT \'FFFFFFFF\',';
