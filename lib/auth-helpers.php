@@ -52,7 +52,7 @@
      * Handles the SQL commands to add a user to the database given whatever is submitted to
      * the form. Returns TRUE if successful, FALSE otherwise.
      */
-    function createNewUser($username, $firstname, $lastname, $email, $password,) {
+    function createNewUser($username, $firstname, $lastname, $email, $password) {
         global $db;
         global $dbname;
         
