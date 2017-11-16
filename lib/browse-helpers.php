@@ -15,8 +15,11 @@
      *  - ARCH (School of Architecture)
      *  - OTH (Other)
      */
-    function getMajorNav($db, $dbname) {
+    function getMajorNav() {
         $ret = '';
+        
+        global $db;
+        global $dbname;
         
         //- Run SQL statement
         $statement = $db->prepare('SELECT * FROM `majors`;');
@@ -65,8 +68,10 @@
      * span with class 'course-identifier'. Gets all the courses under the major code
      * specified in the parameters.
      */
-    function getNavPerMajor($majorCode, $db) {
+    function getNavPerMajor($majorCode) {
         $ret .= '';
+        
+        global $db;
         
         //- Execute SQL statement.
         $statement = $db->prepare('SELECT * FROM `courses` WHERE `major` = :major');
