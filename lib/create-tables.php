@@ -43,9 +43,9 @@
     }
     
     $query  = 'CREATE TABLE votes (';
-    $query .= 'id varchar(24) NOT NULL,';
+    $query .= 'id varchar(8) NOT NULL,';
     $query .= 'vote int NOT NULL,';
-    $query .= 'commentid varchar(16) NOT NULL,';
+    $query .= 'commentid varchar(8) NOT NULL,';
     $query .= 'PRIMARY KEY(id)';
     $query .= ');';
     
@@ -63,8 +63,10 @@
     $query .= 'comment varchar(2048) NOT NULL,';
     $query .= 'active tinyint DEFAULT 1,';
     $query .= 'ratingid varchar(8) NOT NULL,';
+    $query .= 'userid varchar(8) NOT NULL';
     $query .= 'PRIMARY KEY(id)';
-    $query .= ');';
+    $query .= ')';
+    $query .= 'DEFAULT CHARSET=utf8 Collate utf8_unicode_ci;';
     
     try {
         $statement = $db->prepare($query);
@@ -76,11 +78,11 @@
     
     $query  = 'CREATE TABLE ratings (';
     $query .= 'id varchar(8) NOT NULL,';
-    $query .= 'category1 int NOT NULL,';
-    $query .= 'category2 int NOT NULL,';
-    $query .= 'category3 int NOT NULL,';
-    $query .= 'category4 int NOT NULL,';
-    $query .= 'category5 int NOT NULL,';
+    $query .= 'category1 int DEFAULT NULL,';
+    $query .= 'category2 int DEFAULT NULL,';
+    $query .= 'category3 int DEFAULT NULL,';
+    $query .= 'category4 int DEFAULT NULL,';
+    $query .= 'category5 int DEFAULT NULL,';
     $query .= 'PRIMARY KEY(id)';
     $query .= ');';
     
@@ -94,10 +96,10 @@
     
     $query  = 'CREATE TABLE suggestions (';
     $query .= 'id varchar(8) NOT NULL,';
-    $query .= 'coursename varchar(54) NOT NULL,';
     $query .= 'major varchar(4) NOT NULL,';
     $query .= 'coursenum int NOT NULL,';
     $query .= 'userid varchar(8) DEFAULT \'FFFFFFFF\',';
+    $query .= 'suggestion varchar(2048) NOT NULL';
     $query .= 'status int DEFAULT 0,';
     $query .= 'PRIMARY KEY(id)';
     $query .= ');';

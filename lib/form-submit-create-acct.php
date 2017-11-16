@@ -111,7 +111,7 @@
     
     //- Submit the form (using function in auth-helpers.php) and redirect.
     if ($continue) {
-        if (createNewUser($username, $firstname, $lastname, strtolower($email), $password, $db, $dbname)) {
+        if (createNewUser($username, $firstname, $lastname, strtolower($email), $password)) {
             sendCreateSuccessEmail($emailArray)
             echo '<script>window.location = "' . $successPage . '"</script>';
         } else {
