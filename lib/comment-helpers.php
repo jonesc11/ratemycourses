@@ -95,3 +95,40 @@
         else
             return false;
     }
+    
+    /**
+     * Returns the content for when the course isn't found.
+     */
+    function courseNotFound() {
+        $ret = array();
+        
+        $ret['title'] = 'Course not found - RateMyCourses';
+        
+        $ret['content']  = '<div id="content">';
+        $ret['content']  = '<h1>Course not found.</h2>';
+        $ret['content']  = '<p><a href="/browsecourses">Click here to return to course page.</a></p>';
+        $ret['content'] .= '</div>';
+    }
+     
+    /**
+     * Returns the content for the specified course and offset.
+     */
+    function getCourseContent($courseid, $offset) {
+        global $db;
+        
+        $query = "SELECT * FROM `courses` WHERE `id` = :id;";
+        $statement = $db->prepare($query);
+        $statement->execute(array(':id' => $courseid));
+        
+        if ($statement->fetch() !== FALSE) {
+            $statement = $db->prepare("SELECT * FROM `comments` WHERE `courseid` = :courseid");
+            $statement->execute(array(':courseid' => $courseid));
+            
+            $comments = array();
+            
+            while ($row = $statement->fetch())
+                $comments[] = $row;
+        } else {
+            return courseNotFound();
+        }
+    }
