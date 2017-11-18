@@ -25,7 +25,10 @@
      * Queries the database and gets the highest ID currently in the database.
      * Returns the next Hex ID.
      */
-    function getNextId($db, $dbname) {
+    function getNextId() {
+        global $db;
+        global $dbname;
+        
         //- Get the IDs (returned in hex)
         $query = "SELECT `id` FROM {$dbname}.`users`;";
         $statement = $db->prepare($query);
@@ -49,7 +52,10 @@
      * Handles the SQL commands to add a user to the database given whatever is submitted to
      * the form. Returns TRUE if successful, FALSE otherwise.
      */
-    function createNewUser($username, $firstname, $lastname, $email, $password, $db, $dbname) {
+    function createNewUser($username, $firstname, $lastname, $email, $password) {
+        global $db;
+        global $dbname;
+        
         //- Generate the salt and hashed password, get next ID.
         $salt = salt();
         $password = genHashedPassword($password, $salt);
@@ -118,33 +124,20 @@
             $focus = $array['focus'];
         
         //- Populate return variable (HTML form)
+        $ret = '';
         if ($error != '') {
-            $ret  = $error;
-            $ret .= '<form name="create-account" method="POST">';
-            $ret .= '<input name="username" type="text" value="' . $username . '" placeholder="Username" class="form-control" required/>';
-            $ret .= '<input name="firstname" type="text" value="' . $firstname . '" placeholder="First Name" class="form-control" required/>';
-            $ret .= '<input name="lastname" type="text" value="' . $lastname . '" placeholder="Last Name" class="form-control" required/>';
-            $ret .= '<input name="email" type="text" value="' . $email . '" placeholder="Email" class="form-control" required/>';
-            $ret .= '<input name="conf_email" type="text" placeholder="Confirm Email" class="form-control" required/>';
-            $ret .= '<input name="password" type="password" placeholder="Password" class="form-control" required/>';
-            $ret .= '<input name="conf_password" type="password" placeholder="Confirm Password" class="form-control" required"/>';
-            $ret .= '<input type="hidden" name="focus" value="' . $focus . '"/>';
-            $ret .= '</form>';
-            $ret .= '<button class="btn btn-primary" id="submit-create">Submit</button>';
-        } else {
-            $ret  = '<form name="create-account" method="POST">';
-            $ret .= '<input name="username" type="text" value="' . $username . '" placeholder="Username" class="form-control" required/>';
-            $ret .= '<input name="firstname" type="text" value="' . $firstname . '" placeholder="First Name" class="form-control" required/>';
-            $ret .= '<input name="lastname" type="text" value="' . $lastname . '" placeholder="Last Name" class="form-control" required/>';
-            $ret .= '<input name="email" type="text" value="' . $email . '" placeholder="Email" class="form-control" required/>';
-            $ret .= '<input name="conf_email" type="text" placeholder="Confirm Email" class="form-control" required/>';
-            $ret .= '<input name="password" type="password" placeholder="Password" class="form-control" required/>';
-            $ret .= '<input name="conf_password" type="password" placeholder="Confirm Password" class="form-control" required/>';
-            $ret .= '<input type="hidden" name="focus" value="' . $focus . '"/>';
-            $ret .= '</form>';
-            $ret .= '<button class="btn btn-primary" id="submit-create">Submit</button>';
+            $ret  .= $error;
         }
-        
+        $ret .= '<form name="create-account" method="POST">';
+        $ret .= '<label for="username" class="form-control-label">Username:</label><input name="username" type="text" value="' . $username . '" class="form-control" required/>';
+        $ret .= '<label for="firstname" class="form-control-label">First Name:</label><input name="firstname" type="text" value="' . $firstname . '" class="form-control" required/>';
+        $ret .= '<label for="lastname" class="form-control-label">Last Name:</label><input name="lastname" type="text" value="' . $lastname . '" class="form-control" required/>';
+        $ret .= '<label for="email" class="form-control-label">Email:</label><input name="email" type="text" value="' . $email . '" class="form-control" required/>';
+        $ret .= '<label for="conf_email" class="form-control-label">Confirm Email:</label><input name="conf_email" type="text" class="form-control" required/>';
+        $ret .= '<label for="password" class="form-control-label">Password:</label><input name="password" type="password" class="form-control" required/>';
+        $ret .= '<label for="conf_password" class="form-control-label">Confirm Password:</label><input name="conf_password" type="password" class="form-control" required"/>';
+        $ret .= '<input type="hidden" name="focus" value="' . $focus . '"/>';
+        $ret .= '</form>';
         return $ret;
     }
     

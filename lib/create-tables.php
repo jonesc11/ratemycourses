@@ -30,6 +30,7 @@
     $query .= 'coursename varchar(54) NOT NULL,';
     $query .= 'major varchar(4) NOT NULL,';
     $query .= 'coursenum int NOT NULL,';
+    $query .= 'schoolid varchar(8) NOT NULL,';
     $query .= 'PRIMARY KEY(id)';
     $query .= ');';
     
@@ -62,9 +63,10 @@
     $query .= 'comment varchar(2048) NOT NULL,';
     $query .= 'active tinyint DEFAULT 1,';
     $query .= 'ratingid varchar(8) NOT NULL,';
-    $query .= 'userid varchar(8) NOT NULL';
+    $query .= 'userid varchar(8) NOT NULL,';
     $query .= 'PRIMARY KEY(id)';
-    $query .= ');';
+    $query .= ')';
+    $query .= 'DEFAULT CHARSET=utf8 Collate utf8_unicode_ci;';
     
     try {
         $statement = $db->prepare($query);
@@ -97,7 +99,7 @@
     $query .= 'major varchar(4) NOT NULL,';
     $query .= 'coursenum int NOT NULL,';
     $query .= 'userid varchar(8) DEFAULT \'FFFFFFFF\',';
-    $query .= 'suggestion varchar(2048) NOT NULL';
+    $query .= 'suggestion varchar(2048) NOT NULL,';
     $query .= 'status int DEFAULT 0,';
     $query .= 'PRIMARY KEY(id)';
     $query .= ');';
@@ -114,7 +116,22 @@
     $query .= 'major varchar(4) NOT NULL,';
     $query .= "school enum('HASS','SCI','ENG','BUS','ARCH','OTH') NOT NULL,";
     $query .= 'name varchar(50) NOT NULL,';
+    $query .= 'schoolid varchar(8) NOT NULL,';
     $query .= 'PRIMARY KEY(major)';
+    $query .= ');';
+    
+    try {
+        $statement = $db->prepare($query);
+        if ($statement->execute() === FALSE)
+            die ($errorMessage . "suggestions");
+    } catch (Exception $e) {
+        die ($errorMessage . "suggestions");
+    }
+    
+    $query  = 'CREATE TABLE schools (';
+    $query .= 'id varchar(8) NOT NULL,';
+    $query .= 'name varchar(50) NOT NULL,';
+    $query .= 'PRIMARY KEY(id)';
     $query .= ');';
     
     try {
