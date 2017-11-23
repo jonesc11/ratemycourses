@@ -97,6 +97,22 @@
     }
     
     /**
+     * Returns a course name given a course ID. Returns null if course ID is not in the table.
+     */
+    function getCourseName($courseId) {
+        global $db;
+        
+        $statement = $db->prepare("SELECT * FROM `courses` WHERE `id` = :id;");
+        $statement->execute(array(':id' => trim($courseId)));
+        
+        if ($course = $statement->fetch()) {
+            return $course['coursename'];
+        } else {
+            return null;
+        }
+    }
+    
+    /**
      * Returns the content for when the course isn't found.
      */
     function courseNotFound() {
@@ -105,9 +121,11 @@
         $ret['title'] = 'Course not found - RateMyCourses';
         
         $ret['content']  = '<div id="content">';
-        $ret['content']  = '<h1>Course not found.</h2>';
-        $ret['content']  = '<p><a href="/browsecourses">Click here to return to course page.</a></p>';
+        $ret['content'] .= '<h1>Course not found.</h2>';
+        $ret['content'] .= '<p><a href="/browsecourses">Click here to return to course page.</a></p>';
         $ret['content'] .= '</div>';
+        
+        return $ret;
     }
      
     /**
@@ -116,11 +134,13 @@
     function getCourseContent($courseid, $offset) {
         global $db;
         
+        $ret = array();
+        
         $query = "SELECT * FROM `courses` WHERE `id` = :id;";
         $statement = $db->prepare($query);
         $statement->execute(array(':id' => $courseid));
         
-        if ($statement->fetch() !== FALSE) {
+        if ($course = $statement->fetch() !== FALSE) {
             $statement = $db->prepare("SELECT * FROM `comments` WHERE `courseid` = :courseid");
             $statement->execute(array(':courseid' => $courseid));
             
@@ -128,7 +148,20 @@
             
             while ($row = $statement->fetch())
                 $comments[] = $row;
+            
+            if (count($comments) == 0) {
+                $ret['title'] = $course['coursename'] . ' - RateMyCourses';
+                
+                $ret['content']  = '<div id="content">';
+                $ret['content'] .= '<h1>There are no reviews of this course... yet!</h1>';
+                $ret['content'] .= '<a href="/createcomment?c=' . $courseid . '" title="Review this course">Review this course</a>';
+                $ret['content'] .= '</div>';
+            } else {
+                
+            }
         } else {
-            return courseNotFound();
+            $ret = courseNotFound();
         }
+        
+        return $ret;
     }
