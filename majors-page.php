@@ -22,17 +22,7 @@
 		</div>
 	</div>
     <div id="courseinfo">
-      <div class="major_container">
-        <?php echo getNavPerMajor('CSCI'); ?>
-<!--
-        <?php
-          if(isset($_POST['major'])) {
-            echo "Did it";
-            $major = $_POST['major'];
-            echo getNavPerMajor($major); 
-          }
-        ?>
--->     
+      <div id="major_container">  
       </div>
     </div>
     </div>

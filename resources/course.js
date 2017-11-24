@@ -18,10 +18,11 @@ $(document).ready(function() {
       
         var code = e.currentTarget.title;
         var request = $.ajax({
-          url: "../ratemycourses/majors-page.php",
+          url: "../ratemycourses/lib/browse-helpers.php",
           type: "post",
           data: {major: code}
         }).done(function(data) {
+          $("#major_container").html(data);
           $("#courseinfo").show();
         }).fail(function() {
           alert("Error");

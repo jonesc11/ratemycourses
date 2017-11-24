@@ -68,6 +68,10 @@
      * span with class 'course-identifier'. Gets all the courses under the major code
      * specified in the parameters.
      */
+    if(isset($_POST['major'])) {
+      echo getNavPerMajor($_POST['major']);
+    }
+
     function getNavPerMajor($majorCode) {
         $ret = '';
         

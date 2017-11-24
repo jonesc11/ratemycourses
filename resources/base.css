@@ -33,7 +33,7 @@ body {
   float: left;
   background-color: #e0d6f9;
   padding: 20px;
-  height: 92.5vh;
+  height: 93vh;
   overflow-y: scroll;
 }
 
@@ -94,8 +94,8 @@ h2 {
   float: right;
 }
 
-.major_container {
-  width: 50%;
+#major_container {
+  width: 80%;
   margin: auto;
   background-color: #e0d6f9;
   margin-top: 20px;
