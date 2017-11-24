@@ -5,6 +5,7 @@
 .navbar {
   border-radius: 0px;
   background-color: var(--purple);
+  margin-bottom: 0px;
 }
 
 .navbar-brand {

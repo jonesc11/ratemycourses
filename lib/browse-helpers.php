@@ -46,15 +46,15 @@
         
         
         //- Loops
-        foreach ($schools as $code => $school) {
+        foreach ($arr as $code => $school) {
             $name = $school['name'];
             $majors = $school['majors'];
             ksort($majors);
             
-            $ret .= '<div id="display-' . $code . '">';
+            $ret .= '<div id="display-' . $code . '" class="display-school">';
             $ret .= '<h2 class="school-name">' . $name . '</h2><ul class="ul-school">';
             foreach ($majors as $majorCode => $majorName) {
-                $ret .= '<li class="li-major"><a href="/browse/?q=' . $majorCode . '" title="' . $majorName . '"><span class="major-code">' . $majorCode . '</span>' . $majorName . '</a></li>';
+                $ret .= '<li class="li-major"><a class="major-link" title="' . $majorCode . '"><span class="major-code">' . $majorCode . ' </span>' . $majorName . '</a></li>';
             }
             $ret .= '</div>';
         }
@@ -69,7 +69,7 @@
      * specified in the parameters.
      */
     function getNavPerMajor($majorCode) {
-        $ret .= '';
+        $ret = '';
         
         global $db;
         
@@ -80,7 +80,7 @@
         $courses = array();
         
         //- Loop through, add to an array of courses with the course number as key
-        $while ($row = $statement->fetch())
+        while ($row = $statement->fetch())
             $courses[$row['coursenum']] = $row;
         
         //- Sort the array
@@ -88,9 +88,10 @@
         
         //- Print the list of courses into a div.
         $ret .= '<div id="courses-' . $majorCode . '">';
+        $ret .= '<h2>'. $majorCode .' Courses</h2>';
         foreach ($courses as $course) {
-            $ret .= '<div class="course"><span class="course-name">' . $course['coursename'] . '</span>';
-            $ret .= '<span class="course-identifier">' . $course['major'] . ' ' . $course['coursenum'] . '</span></div>';
+            $ret .= '<div class="course"><a href="#"><span class="course-identifier"> ' . $course['major'] . ' ' . $course['coursenum'] . '</span>';
+            $ret .= ' - <span class="course-name">' . $course['coursename'] . '</span></a></div>';
         }
         $ret .= '</div>';
         
