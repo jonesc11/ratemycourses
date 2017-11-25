@@ -140,7 +140,7 @@
         $statement = $db->prepare($query);
         $statement->execute(array(':id' => $courseid));
         
-        if ($course = $statement->fetch() !== FALSE) {
+        if (($course = $statement->fetch()) !== FALSE) {
             $statement = $db->prepare("SELECT * FROM `comments` WHERE `courseid` = :courseid");
             $statement->execute(array(':courseid' => $courseid));
             
