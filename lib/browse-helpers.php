@@ -31,7 +31,7 @@
         //- Parse SQL
         while ($row = $statement->fetch()) {
             $arr[$row['school']]['majors'][$row['major']] = $row['name'];
-            $arr[$row['school']]['name'] = $row['major'];
+            $arr[$row['school']]['name'] = $row['school'];
         }
         
         //- Loops
