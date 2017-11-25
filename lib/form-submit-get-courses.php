@@ -17,13 +17,13 @@
      *   - n: coursenum invalid
      */
     
-    if (isset($_POST['submit']) && $_POST['submit'] == 'Get Majors') {
+    if (isset($_POST['submit']) && $_POST['submit'] == 'Get Courses') {
         if (isset($_POST['school']) && $_POST['school'] != -1) {
-            header ('Location: /createmajor?s=' . trim($_POST['school']));
+            header ('Location: /createcourse?s=' . trim($_POST['school']));
         } else {
-            header ('Location: /createmajor');
+            header ('Location: /createcourse');
         }
     } else {
-        header ('Location: /createmajor');
+        header ('Location: /createcourse');
     }
 ?>

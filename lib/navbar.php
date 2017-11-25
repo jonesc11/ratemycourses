@@ -2,7 +2,7 @@
 <?php require_once(__DIR__ . DIRECTORY_SEPARATOR . 'auth-helpers.php'); ?>
 <html>
   <head>
-    <link rel="stylesheet" type="text/css" href="lib/navbar.css">
+    <link rel="stylesheet" type="text/css" href="/lib/navbar.css">
   </head>
   <body>
     <nav class="navbar navbar-light">

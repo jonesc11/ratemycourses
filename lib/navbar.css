@@ -38,12 +38,16 @@
 }
 
 .btn {
-  background-color: var(--purple);
+  background-image: linear-gradient(to bottom,#59217c 0,#2f0b45 100%);
+  background-color: #59217c;
+  border: none;
   color: white;
 }
 
 .btn:hover, .btn:focus {
-  background-color: lavender;
+  color: white;
+  background-color: #337ab7;
+  background-image: none;
 }
 
 .modal-dialog {

@@ -113,7 +113,7 @@
         $statementSchools = $db->prepare("SELECT * FROM `schools` ORDER BY `name`");
         $statementSchools->execute();
         
-        $ret = '<table id="schools">';
+        $ret = '<table id="schools"><th>School</th><th>Number of Courses</th>';
         
         while ($school = $statementSchools->fetch()) {
             $statementCount = $db->prepare('SELECT COUNT(id) AS count FROM `courses` WHERE `schoolid` = :sid');
@@ -129,7 +129,7 @@
                 $ret .= '<td>0</td>';
             }
             
-            $ret .= '<td><form method="POST" action="/lib/form-submit-school-delete.php"><input type="submit" name="delete" value="Delete School" /><input type="hidden" name="id" value="' . $school['id'] . '" /></form>';
+            $ret .= '<td><form method="POST" action="/lib/form-submit-school-delete.php"><input class="btn" type="submit" name="delete" value="Delete School" /><input type="hidden" name="id" value="' . $school['id'] . '" /></form>';
         }
         
         $ret .= '</table>';
@@ -146,7 +146,7 @@
         $statement = $db->prepare("SELECT * FROM `schools` ORDER BY `name`");
         $statement->execute();
         
-        $ret  = '<select name="school">';
+        $ret  = '<select class="input-field" name="school">';
         $ret .= '<option value="-1" selected>-- SELECT A SCHOOL --</option>';
         
         while ($school = $statement->fetch()) {
@@ -282,7 +282,7 @@
     }
     
     /**
-     * Returns a table that has all of the courses for the specified school.
+     * Returns a table that has the number of courses for each school.
      */
     function getCourses($school) {
         global $db;
@@ -314,6 +314,39 @@
         return $ret;
     }
     
+    /**
+     * Returns a table that has all of the courses for the specified school.
+     */
+    function listCourses($school) {
+        global $db;
+        
+        $ret = '<div id="courses">';
+        
+        $statement = $db->prepare("SELECT * FROM `schools` WHERE `id` = :id");
+        $statement->execute(array(':id' => $school));
+        
+        if ($schoolRow = $statement->fetch()) {
+            $ret .= '<h1>' . $schoolRow['name'] . '</h1>';
+            
+            $statement = $db->prepare("SELECT * FROM `courses` WHERE `schoolid` = :schoolid");
+            $statement->execute(array(':schoolid' => $school));
+            
+            $ret .= '<table><th>Course</th><th>Major Code</th><th>Course Number</th>';
+            
+            while ($course = $statement->fetch()) {
+                $ret .= '<tr><td>' . $course['coursename'] . '</td>';
+                $ret .= '<td>' . $course['major'] . '</td>';
+                $ret .= '<td>' . $course['coursenum'] . '</td></tr>';
+            }
+            
+            $ret .= '</table>';
+        }
+        
+        $ret .= '</div>';
+        
+        return $ret;
+    }
+
     /**
      * Deletes a course and everything associated with it.
      */
@@ -389,7 +422,7 @@
             $statement = $db->prepare("SELECT * FROM `majors` WHERE `schoolid` = :schoolid");
             $statement->execute(array(':schoolid' => $school));
             
-            $ret .= '<table>';
+            $ret .= '<table><th>Major</th><th>Major Code</th><th>School</th>';
             
             while ($major = $statement->fetch()) {
                 $ret .= '<tr><td>' . $major['name'] . '</td>';
