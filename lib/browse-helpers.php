@@ -15,15 +15,15 @@
      *  - ARCH (School of Architecture)
      *  - OTH (Other)
      */
-    function getMajorNav() {
+    function getMajorNav($school) {
         $ret = '';
         
         global $db;
         global $dbname;
         
         //- Run SQL statement
-        $statement = $db->prepare('SELECT * FROM `majors`;');
-        $result = $statement->execute();
+        $statement = $db->prepare('SELECT * FROM `majors` WHERE `schoolid` = :school');
+        $result = $statement->execute(array (':school' => $school));
         
         //- Set up base array
         $arr = array();
@@ -34,7 +34,12 @@
             $arr[$row['school']]['name'] = $row['school'];
         }
         
+        $statement = $db->prepare('SELECT * FROM `schools` WHERE `id` = :school');
+        $result = $statement->execute(array (':school' => $school));
+        $schoolname = $statement->fetch();
+      
         //- Loops
+        $ret .= '<div id="coursenav-container" class="initial-view"><h1>' . ucwords(strtolower($schoolname['name'])) . '</h1><div id ="coursenav" class="course">';
         foreach ($arr as $code => $school) {
             $name = $school['name'];
             $majors = $school['majors'];
@@ -47,7 +52,10 @@
             }
             $ret .= '</div>';
         }
-        
+        $ret .= '</div></div>';
+        if(empty($arr)) {
+          $ret = '<h2 class="no-results">There are currently no majors listed for ' . ucwords(strtolower($schoolname['name'])) .'</h2>';
+        }
         return $ret;
     }
     

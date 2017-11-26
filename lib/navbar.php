@@ -6,11 +6,11 @@
   </head>
   <body>
     <nav class="navbar navbar-light">
-      <a class="navbar-brand" href="#">RateMyCourses</a>
+      <a class="navbar-brand" href="/welcome.php">RateMyCourses</a>
       
       <div id="navbarNavAltMarkup">
         <div class="navbar-nav" id="menu">
-          <a class="nav-item nav-link" href="#">Home</a>
+          <a class="nav-item nav-link" href="/welcome.php">Home</a>
           <a class="nav-item nav-link" href="#">Tips</a>
           <a class="nav-item nav-link" data-toggle="modal" data-target="#login">Login</a>
           <a class="nav-item nav-link hidden" href="#">Logout</a>
