@@ -45,6 +45,7 @@
             </form>
           </div>
           <div class="modal-footer">
+            <p class="redirect-text">Don't have an account? <a class="redirect">Sign up now!</a></p>
             <button type="button" class="btn">Login</button>
           </div>
         </div>
@@ -66,10 +67,19 @@
             </div>
           </div>
           <div class="modal-footer">
+            <p class="redirect-text">Already have an account? <a class="redirect">Log in now!</a></p>
             <button type="button" class="btn">Sign up</button>
           </div>
         </div>
       </div>
     </div>
+    <script>
+      $(document).ready(function() {
+        $(".redirect").on('click', function() {
+          $("#login").modal('toggle');
+          $("#signup").modal('toggle');
+        });
+      });
+    </script>
   </body>
 </html>

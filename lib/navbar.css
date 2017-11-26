@@ -87,6 +87,14 @@
   margin-bottom: 10px;
 }
 
+.redirect {
+  cursor: pointer;
+}
+
+.redirect-text {
+  float: left;
+}
+
 @media only screen and (min-width: 401px) {
   .form-inline {
     float: right;
