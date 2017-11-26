@@ -121,8 +121,8 @@
         $ret['title'] = 'Course not found - RateMyCourses';
         
         $ret['content']  = '<div id="content">';
-        $ret['content'] .= '<h1>Course not found.</h2>';
-        $ret['content'] .= '<p><a href="/browsecourses">Click here to return to course page.</a></p>';
+        $ret['content'] .= '<h2>Course not found.</h2>';
+        $ret['content'] .= '<p><a href="/majors-page.php">Click here to return to course page.</a></p>';
         $ret['content'] .= '</div>';
         
         return $ret;
