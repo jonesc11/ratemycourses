@@ -2,7 +2,7 @@
 <?php require_once(__DIR__ . DIRECTORY_SEPARATOR . 'auth-helpers.php'); ?>
 <html>
   <head>
-    <link rel="stylesheet" type="text/css" href="lib/navbar.css">
+    <link rel="stylesheet" type="text/css" href="/lib/navbar.css">
   </head>
   <body>
     <nav class="navbar navbar-light">
@@ -18,7 +18,7 @@
         </div>
         <form class="form-inline nav navbar-nav navbar-right">
           <input id="search" class="form-control" type="text" placeholder="Search">
-          <button class="btn btn-outline-success" type="submit">Search</button>
+          <button class="btn" type="submit">Search</button>
         </form>
       </div>
     </nav>

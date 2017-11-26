@@ -22,7 +22,7 @@
 }
 
 .navbar .btn:hover {
-  background-color: lavender;
+  background-color: #337ab7;
 }
 
 .navbar .btn {
@@ -30,6 +30,7 @@
   background-color: ghostwhite;
   color: black;
   margin-left: 10px;
+  background-image: none;
 }
 
 .modal-title {
@@ -38,13 +39,18 @@
 }
 
 .btn {
-  background-color: var(--purple);
+  background-image: linear-gradient(to bottom,#59217c 0,#2f0b45 100%);
+  background-color: #59217c;
+  border: none;
   color: white;
 }
 
 .btn:hover, .btn:focus {
-  background-color: lavender;
+  color: white;
+  background-color: #337ab7;
+  background-image: none;
 }
+
 
 .modal-dialog {
   margin: auto;
