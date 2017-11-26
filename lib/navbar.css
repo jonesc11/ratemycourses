@@ -22,7 +22,7 @@
 }
 
 .navbar .btn:hover {
-  background-color: lavender;
+  background-color: #337ab7;
 }
 
 .navbar .btn {
@@ -30,6 +30,7 @@
   background-color: ghostwhite;
   color: black;
   margin-left: 10px;
+  background-image: none;
 }
 
 .modal-title {
@@ -49,6 +50,7 @@
   background-color: #337ab7;
   background-image: none;
 }
+
 
 .modal-dialog {
   margin: auto;

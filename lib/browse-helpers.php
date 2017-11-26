@@ -81,9 +81,9 @@
         
         //- Print the list of courses into a div.
         $ret .= '<div id="courses-' . $majorCode . '">';
-        $ret .= '<h2>'. ucwords(strtolower($majorCode)) .' Courses</h2>';
+        $ret .= '<h2>'. ucwords(strtoupper($majorCode)) .' Courses</h2>';
         foreach ($courses as $course) {
-            $ret .= '<div class="course"><a href="#"><span class="course-identifier"> ' . strtoupper($course['major']) . ' ' . $course['coursenum'] . '</span>';
+            $ret .= '<div class="course"><a href="../viewcourse/?c='. $course['id'] . '"><span class="course-identifier"> ' . strtoupper($course['major']) . ' ' . $course['coursenum'] . '</span>';
             $ret .= ' - <span class="course-name">' . $course['coursename'] . '</span></a></div>';
         }
         $ret .= '</div>';

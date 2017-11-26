@@ -150,6 +150,7 @@
                 $comments[] = $row;
             
             $ratings = array(0,0,0,0,0);
+            $total_average = 0;
             
             //- Convert ratings from ratings table to comments.
             foreach ($comments as $key => $comment) {
@@ -171,58 +172,76 @@
                 $ratings[2] += $row['category3'];
                 $ratings[3] += $row['category4'];
                 $ratings[4] += $row['category5'];
+              
             }
             
             //- Calculate averages
-            $ratings[0] /= count($comments);
-            $ratings[1] /= count($comments);
-            $ratings[2] /= count($comments);
-            $ratings[3] /= count($comments);
-            $ratings[4] /= count($comments);
+            if(count($comments) != 0) {
+              $ratings[0] /= count($comments);
+              $ratings[1] /= count($comments);
+              $ratings[2] /= count($comments);
+              $ratings[3] /= count($comments);
+              $ratings[4] /= count($comments);
+            }
+          
+            //- Calculate Overall Average for Course
+            $temp_sum = 0;
+            for($i = 0; $i < 5; $i++) {
+              $temp_sum += $ratings[$i];
+            }
+            $average = $temp_sum / 4;
             
             if (count($comments) == 0) {
                 //- Display no posts yet
                 $ret['title'] = $course['coursename'] . ' - RateMyCourses';
                 
                 $ret['content']  = '<div id="content">';
-                $ret['content'] .= '<h1>There are no reviews of this course... yet!</h1>';
-                $ret['content'] .= '<a href="/createcomment?c=' . $courseid . '" title="Review this course">Review this course</a>';
+                $ret['content'] .= '<h1>' . $course['major'] . ' ' . $course['coursenum'] . ' - '. $course['coursename'] . '</h1>';
+                $ret['content'] .= '<h2>There are no ratings for this course... yet!</h2>';
+                $ret['content'] .= '<a class="btn" href="/createcomment?c=' . $courseid . '" title="Rate this course">Rate this course</a>';
                 $ret['content'] .= '</div>';
             } else {
                 $ret['title'] = $course['coursename'] . ' - RateMyCourses';
                 
                 //- Overview - averages, etc
                 $ret['content']  = '<div id="content">';
-                $ret['content'] .= '<h1>' . $course['coursename'] . '</h1>';
-                $ret['content'] .= '<h2>Overview:</h2>';
-                $ret['content'] .= '<h3>Difficulty:</h3><p>' . number_format($ratings[0],1) . ' / 5</p><img src="/resources/images/rating' . round($ratings[0]) . '.jpg" alt="Rating of ' . number_format($ratings[0],1) . '" />';
-                $ret['content'] .= '<h3>Workload:</h3><p>' . number_format($ratings[1],1) . ' / 5</p><img src="/resources/images/rating' . round($ratings[1]) . '.jpg" alt="Rating of ' . number_format($ratings[1],1) . '" />';
-                $ret['content'] .= '<h3>Attendance:</h3><p>' . number_format($ratings[2],1) . ' / 5</p><img src="/resources/images/rating' . round($ratings[2]) . '.jpg" alt="Rating of ' . number_format($ratings[2],1) . '" />';
-                $ret['content'] .= '<h3>Interesting:</h3><p>' . number_format($ratings[3],1) . ' / 5</p><img src="/resources/images/rating' . round($ratings[3]) . '.jpg" alt="Rating of ' . number_format($ratings[3],1) . '" />';
+                $ret['content'] .= '<h1><strong>' . $course['major'] . ' ' . $course['coursenum'] . ' -</strong> ' . $course['coursename'] . '</h1>';
+                $ret['content'] .= '<div class="averages-container"><h2>Overall Average: ' . number_format($average, 2) . '</h2>';
+                $ret['content'] .= '<table class="ratings-averages"><th>Difficulty:</th><th>Workload:</th><th>Attendance:</th><th>Interesting:</th>
+                <tr><td>' . number_format($ratings[0],1) . ' / 5</td><td>' . number_format($ratings[1],1) . '/ 5</td><td>' . number_format($ratings[2],1) . '/ 5</td><td>' . number_format($ratings[3],1) . '/ 5</td></tr></table>';
+                $ret['content'] .= '<div class="rating-image-container"><h3>Your Verdict:</h3><img class="rating-image" src="/resources/images/rating'. round($average) . '.jpg" alt="Rating image"/></div></div>';
+//                $ret['content'] .= '<h3>Difficulty:</h3><p>' . number_format($ratings[0],1) . ' / 5</p>';
+//                $ret['content'] .= '<h3>Workload:</h3><p>' . number_format($ratings[1],1) . ' / 5</p>';
+//                $ret['content'] .= '<h3>Attendance:</h3><p>' . number_format($ratings[2],1) . ' / 5</p>';
+//                $ret['content'] .= '<h3>Interesting:</h3><p>' . number_format($ratings[3],1) . ' / 5</p>';
                 
                 //- Counter for paginating.
                 $counter = 0;
-                
+                $ret['content'] .= '<div class="comments"><h2>User Ratings:<a class="btn rating-link" href="/createcomment?c=' . $courseid . '" title="Rate this course">Review this course</a></h2><hr>';
                 //- List all comments.
                 foreach ($comments as $comment) {
                     if ($counter >= $offset && $counter < $offset + 25) {
                         $ret['content'] .= '<div class="comment">';
+                        $ret['content'] .= '<em>' . $comment['userid'] . '</em>'; 
                         $ret['content'] .= '<div class="comment-ratings">';
-                        $ret['content'] .= '<h3>Difficulty:</h3><p>' . $comment['rating1'] . ' / 5</p><img src="/resources/images/rating' . $comment['rating1'] . '.jpg" alt="Rating of ' . $comment['rating1'] . '" />';
-                        $ret['content'] .= '<h3>Workload:</h3><p>' . $comment['rating2'] . ' / 5</p><img src="/resources/images/rating' . $comment['rating2'] . '.jpg" alt="Rating of ' . $comment['rating2'] . '" />';
-                        $ret['content'] .= '<h3>Attendance:</h3><p>' . $comment['rating3'] . ' / 5</p><img src="/resources/images/rating' . $comment['rating3'] . '.jpg" alt="Rating of ' . $comment['rating3'] . '" />';
-                        $ret['content'] .= '<h3>Interesting:</h3><p>' . $comment['rating4'] . ' / 5</p><img src="/resources/images/rating' . $comment['rating4'] . '.jpg" alt="Rating of ' . $comment['rating4'] . '" />';
+                        $ret['content'] .= '<table class="ratings-averages"><th>Difficulty:</th><th>Workload:</th><th>Attendance:</th><th>Interesting:</th>
+                        <tr><td>' . $comment['rating1'] . ' / 5</td><td>' . $comment['rating2'] . '/ 5</td><td>' . $comment['rating3'] . '/ 5</td><td>' . $comment['rating4'] . '/ 5</td></tr></table>';
                         $ret['content'] .= '</div>';
-                        $ret['content'] .= '<div class="comment-content">';
-                        $ret['content'] .= $comment['comment'];
+                        $ret['content'] .= '<div class="comment-content"><strong>Comment:</strong> ';
+                        if($comment['comment'] == "") {
+                          $ret['content'] .= 'none';
+                        }
+                        else {
+                          $ret['content'] .= $comment['comment'];
+                        }
                         $ret['content'] .= '</div>';
-                        $ret['content'] .= '</div>';
+                        $ret['content'] .= '</div><hr>';
                     }
                     
                     $counter++;
                 }
                 
-                $ret['content'] .= '</div>';
+                $ret['content'] .= '</div><div class="clear"></div></div>';
             }
         } else {
             $ret = courseNotFound();

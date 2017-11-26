@@ -18,7 +18,7 @@
         </div>
         <form class="form-inline nav navbar-nav navbar-right">
           <input id="search" class="form-control" type="text" placeholder="Search">
-          <button class="btn btn-outline-success" type="submit">Search</button>
+          <button class="btn" type="submit">Search</button>
         </form>
       </div>
     </nav>
