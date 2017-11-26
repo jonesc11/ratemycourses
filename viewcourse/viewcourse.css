@@ -4,6 +4,8 @@ body {
   background: rgb(226,226,226); /* Old browsers */
   background: -moz-linear-gradient(top, rgba(226,226,226,1) 0%, rgba(219,219,219,1) 50%, rgba(209,209,209,1) 51%, rgba(254,254,254,1) 100%); /* FF3.6-15 */
   background: -webkit-linear-gradient(top, rgba(226,226,226,1) 0%,rgba(219,219,219,1) 50%,rgba(209,209,209,1) 51%,rgba(254,254,254,1) 100%); /* Chrome10-25,Safari5.1-6 */
+  background-repeat: no-repeat;
+  background-attachment: fixed;
 }
 
 html, body {
@@ -28,7 +30,7 @@ html, body {
   padding: 20px;
   border: 1px solid black;
   box-shadow: 0 8px 17px 0 rgba(0,0,0,.2), 0 6px 20px 0 rgba(0,0,0,.19);
-  margin-bottom: 20px;
+  margin-bottom: 50px;
 }
 
 h1 {
