@@ -13,6 +13,8 @@
     
     if (isset($_POST['userid']) && $_POST['userid'] != '')
         $param['userid'] = $_POST['userid'];
+    else
+        $param['userid'] = 'FFFFFFFF';
     
     $param['suggestion'] = $_POST['suggestion'];
     
