@@ -96,8 +96,6 @@
     
     $query  = 'CREATE TABLE IF NOT EXISTS suggestions (';
     $query .= 'id varchar(8) NOT NULL,';
-    $query .= 'major varchar(4) NOT NULL,';
-    $query .= 'coursenum int NOT NULL,';
     $query .= 'userid varchar(8) DEFAULT \'FFFFFFFF\',';
     $query .= 'suggestion varchar(2048) NOT NULL,';
     $query .= 'status int DEFAULT 0,';
