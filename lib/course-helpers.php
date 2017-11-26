@@ -419,7 +419,7 @@
         if ($schoolRow = $statement->fetch()) {
             $ret .= '<h1>' . $schoolRow['name'] . '</h1>';
             
-            $statement = $db->prepare("SELECT * FROM `majors` WHERE `schoolid` = :schoolid");
+            $statement = $db->prepare("SELECT * FROM `majors` WHERE `schoolid` = :schoolid ORDER BY `school`, `major`");
             $statement->execute(array(':schoolid' => $school));
             
             $ret .= '<table><th>Major</th><th>Major Code</th><th>School</th>';

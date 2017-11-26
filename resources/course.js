@@ -1,9 +1,9 @@
 $(document).ready(function() {
     $("#courseinfo").hide();
-    $(".major-link").click(function(e) { 
+    $(".major-link").click(function(e) {
         $("#coursenav").removeClass("initial-view").addClass("side-view");
         $(".display-school").removeClass("display-school").addClass("side-school");
-      
+        
         var code = e.currentTarget.title;
         var request = $.ajax({
           url: "/lib/browse-helpers.php",
@@ -16,6 +16,4 @@ $(document).ready(function() {
           alert("Error");
         });
     }); 
-
 });
-
