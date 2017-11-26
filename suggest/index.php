@@ -40,7 +40,7 @@
                 <label>Enter your Suggestion: </label>
               </td>
               <td>
-                <textarea name="suggestion" rows="4" cols="50" required></textarea>
+                <textarea class="comment" name="suggestion" rows="4" cols="50" required></textarea>
               </td>
             </tr>
             <tr>
