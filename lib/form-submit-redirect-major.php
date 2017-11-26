@@ -19,6 +19,7 @@
     
     if (isset($_POST['submit']) && $_POST['submit'] == 'Go') {
         if (isset($_POST['school']) && $_POST['school'] != -1) {
+            $_SESSION['school'] = $_POST['school'];
             header ('Location: /majors-page.php/?s=' . trim($_POST['school']));
         } else {
             header ('Location: /majors-page.php');

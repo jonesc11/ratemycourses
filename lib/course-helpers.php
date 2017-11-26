@@ -328,7 +328,7 @@
         if ($schoolRow = $statement->fetch()) {
             $ret .= '<h1>' . $schoolRow['name'] . '</h1>';
             
-            $statement = $db->prepare("SELECT * FROM `courses` WHERE `schoolid` = :schoolid");
+            $statement = $db->prepare("SELECT * FROM `courses` WHERE `schoolid` = :schoolid ORDER BY `major`, `coursenum`");
             $statement->execute(array(':schoolid' => $school));
             
             $ret .= '<table><th>Course</th><th>Major Code</th><th>Course Number</th>';

@@ -43,6 +43,6 @@
     $result = createCourse($createParam);
     
     if ($result === TRUE)
-        header ('Location: /createcourse');
+        header ('Location: /createcourse?s=' . $_POST['school']);
     else
         header ('Location: /createcourse?e=' . $result);
