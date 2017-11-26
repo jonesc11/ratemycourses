@@ -33,89 +33,31 @@ html, body {
   margin-bottom: 50px;
 }
 
-h1 {
-  font-size: 32px;
-  font-weight: bold;
-  margin: 0px;
+.form {
   margin-bottom: 20px;
-  border-bottom: 1px solid black;
+  text-align: center;
 }
 
-h2 {
-  font-size: 28px;
+.form .btn {
+  margin-left: 20px;
+  margin-top: -3px;
+}
+
+.input-field {
+  width: 30%;
+  font-size: 16px;
+  height: 32px;
+}
+
+h1 {
   margin: 0px;
+  margin-top: 10px;
   margin-bottom: 10px;
+  text-align: center;
 }
 
 h3 {
-  margin: 0px;
-  margin-bottom: 10px;
-}
-.ratings-averages {
-  margin-left: 20px;
-}
-
-th {
-  font-weight: bold;
-  padding-right: 20px;
-  font-size: 18px;
-}
-
-td {
-  font-size: 18px;
-}
-
-.rating-image {
-  width: 250px;
-  height: 250px;
-  border-radius: 20px;
-}
-
-.averages-container {
-  float: left;
-  width: 50%;
-}
-
-.rating-image-container {
-  width: 250px;
   text-align: center;
-  margin-top: 20px;
-  margin-left: 20px;
-}
-
-.comments {
-  float: left;
-  width: 50%;
-}
-
-div.clear {
-  clear:both;
-}
-
-hr {
-  border-top: 1px solid black;
-  margin-bottom: 10px;
-}
-
-.comment {
-  padding: 0px 10px;
-}
-
-.comment-content {
+  font-size: 16px;
   margin-top: 10px;
-  font-size: 18px;
-}
-
-.rating-link {
-  float: right;
-}
-
-.return {
-  float: right;
-  margin-top: 0px;
-}
-
-.return_2 {
-  float: none;
-  margin-left: 10px;
 }

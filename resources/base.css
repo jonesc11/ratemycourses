@@ -23,6 +23,9 @@ body {
   padding: 20px;
   border: 1px solid black;
   box-shadow: 0 8px 17px 0 rgba(0,0,0,.2), 0 6px 20px 0 rgba(0,0,0,.19);
+}
+
+.course {
   -webkit-columns: 2;
   -moz-columns: 2;
   columns: 2;
@@ -49,6 +52,11 @@ a {
 html, body {
   height: 100%;
   width: 100%;
+}
+
+h1 {
+  margin: 0px;
+  margin-bottom: 10px;
 }
 
 h2 {
@@ -106,4 +114,15 @@ h2 {
 
 .major-code, .course-identifier {
   font-weight: bold;
+}
+
+.no-results {
+  width: 80%;
+  height: 100%;
+  margin: auto;
+  background-color: #e0d6f9;
+  margin-top: 20px;
+  padding: 20px;
+  border: 1px solid black;
+  box-shadow: 0 8px 17px 0 rgba(0,0,0,.2), 0 6px 20px 0 rgba(0,0,0,.19);
 }

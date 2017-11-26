@@ -121,8 +121,8 @@
         $ret['title'] = 'Course not found - RateMyCourses';
         
         $ret['content']  = '<div id="content">';
-        $ret['content'] .= '<h1>Course not found.</h2>';
-        $ret['content'] .= '<p><a href="/browsecourses">Click here to return to course page.</a></p>';
+        $ret['content'] .= '<h2>Course not found.</h2>';
+        $ret['content'] .= '<p><a href="/welcome.php">Click here to return to main page.</a></p>';
         $ret['content'] .= '</div>';
         
         return $ret;
@@ -198,14 +198,14 @@
                 $ret['content']  = '<div id="content">';
                 $ret['content'] .= '<h1>' . $course['major'] . ' ' . $course['coursenum'] . ' - '. $course['coursename'] . '</h1>';
                 $ret['content'] .= '<h2>There are no ratings for this course... yet!</h2>';
-                $ret['content'] .= '<a class="btn" href="/createcomment?c=' . $courseid . '" title="Rate this course">Rate this course</a>';
+                $ret['content'] .= '<a class="btn" href="/createcomment?c=' . $courseid . '" title="Rate this course">Rate this course</a><a href="../majors-page.php/?s=' . $course['schoolid'] . '" class="btn return_2">Return to School</a>';
                 $ret['content'] .= '</div>';
             } else {
                 $ret['title'] = $course['coursename'] . ' - RateMyCourses';
                 
                 //- Overview - averages, etc
                 $ret['content']  = '<div id="content">';
-                $ret['content'] .= '<h1><strong>' . $course['major'] . ' ' . $course['coursenum'] . ' -</strong> ' . $course['coursename'] . '</h1>';
+                $ret['content'] .= '<h1><strong>' . $course['major'] . ' ' . $course['coursenum'] . ' -</strong> ' . $course['coursename'] . '<a href="../majors-page.php/?s=' . $course['schoolid'] . '" class="btn return">Return to School</a></h1>';
                 $ret['content'] .= '<div class="averages-container"><h2>Overall Average: ' . number_format($average, 2) . '</h2>';
                 $ret['content'] .= '<table class="ratings-averages"><th>Difficulty:</th><th>Workload:</th><th>Attendance:</th><th>Interesting:</th>
                 <tr><td>' . number_format($ratings[0],1) . ' / 5</td><td>' . number_format($ratings[1],1) . '/ 5</td><td>' . number_format($ratings[2],1) . '/ 5</td><td>' . number_format($ratings[3],1) . '/ 5</td></tr></table>';

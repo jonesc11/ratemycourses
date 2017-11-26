@@ -6,11 +6,11 @@
   </head>
   <body>
     <nav class="navbar navbar-light">
-      <a class="navbar-brand" href="#">RateMyCourses</a>
+      <a class="navbar-brand" href="/welcome.php">RateMyCourses</a>
       
       <div id="navbarNavAltMarkup">
         <div class="navbar-nav" id="menu">
-          <a class="nav-item nav-link" href="#">Home</a>
+          <a class="nav-item nav-link" href="/welcome.php">Home</a>
           <a class="nav-item nav-link" href="#">Tips</a>
           <a class="nav-item nav-link" data-toggle="modal" data-target="#login">Login</a>
           <a class="nav-item nav-link hidden" href="#">Logout</a>
@@ -45,6 +45,7 @@
             </form>
           </div>
           <div class="modal-footer">
+            <p class="redirect-text">Don't have an account? <a class="redirect">Sign up now!</a></p>
             <button type="button" class="btn">Login</button>
           </div>
         </div>
@@ -66,10 +67,19 @@
             </div>
           </div>
           <div class="modal-footer">
+            <p class="redirect-text">Already have an account? <a class="redirect">Log in now!</a></p>
             <button type="button" class="btn">Sign up</button>
           </div>
         </div>
       </div>
     </div>
+    <script>
+      $(document).ready(function() {
+        $(".redirect").on('click', function() {
+          $("#login").modal('toggle');
+          $("#signup").modal('toggle');
+        });
+      });
+    </script>
   </body>
 </html>
