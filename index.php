@@ -25,6 +25,7 @@
           <?php echo getSchoolSelect(); ?>
           <input class="btn" type="submit" name="submit" value="Go" />
         </form>
+        <h3>Don't see your school listed? Have any suggestions? <a href="/suggest/index.php">Click here!</a></h3>
       </div>
     </div>
   </body>

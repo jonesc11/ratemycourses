@@ -52,9 +52,10 @@
             }
             $ret .= '</div>';
         }
-        $ret .= '</div></div>';
+        $ret .= '</div><h3>Don\'t see a course listed? Have any suggestions? <a href="/suggest/index.php">Click here!</a></h3></div>';
         if(empty($arr)) {
-          $ret = '<h2 class="no-results">There are currently no majors listed for ' . ucwords(strtolower($schoolname['name'])) .'</h2>';
+          $ret = '<div class="no-results"><h2>There are currently no courses listed for ' . ucwords(strtolower($schoolname['name'])) . '</h2>';
+          $ret .= '<h3>Want to suggest a course? <a href="/suggest/index.php">Click here!</a></h3></div>';
         }
         return $ret;
     }
