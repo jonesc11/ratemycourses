@@ -66,6 +66,12 @@ h2 {
   margin-bottom: 10px;
 }
 
+h3 {
+  font-size: 16px;
+  margin-top: 10px;
+  text-align: center;
+}
+
 .display-school {
   display: inline-block;
   width: 100%;

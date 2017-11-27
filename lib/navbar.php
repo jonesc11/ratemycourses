@@ -67,7 +67,7 @@
           </div>
           <div class="modal-footer">
             <p class="redirect-text">Already have an account? <a class="redirect">Log in now!</a></p>
-            <button type="button" class="btn">Sign up</button>
+            <button type="button" class="btn" id="sign-up">Sign up</button>
           </div>
         </div>
       </div>

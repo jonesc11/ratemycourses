@@ -102,7 +102,6 @@
         $email = '';
         $firstname = '';
         $lastname = '';
-        $focus = '';
         
         //- Fill the variables if necessary.
         if (isset($array['error']))
@@ -120,23 +119,19 @@
         if (isset($array['lastname']))
             $lastname = $array['lastname'];
         
-        if (isset($array['focus']))
-            $focus = $array['focus'];
-        
         //- Populate return variable (HTML form)
         $ret = '';
         if ($error != '') {
             $ret  .= $error;
         }
         $ret .= '<form name="create-account" method="POST">';
-        $ret .= '<label for="username" class="form-control-label">Username:</label><input name="username" type="text" value="' . $username . '" class="form-control" required/>';
-        $ret .= '<label for="firstname" class="form-control-label">First Name:</label><input name="firstname" type="text" value="' . $firstname . '" class="form-control" required/>';
-        $ret .= '<label for="lastname" class="form-control-label">Last Name:</label><input name="lastname" type="text" value="' . $lastname . '" class="form-control" required/>';
-        $ret .= '<label for="email" class="form-control-label">Email:</label><input name="email" type="text" value="' . $email . '" class="form-control" required/>';
-        $ret .= '<label for="conf_email" class="form-control-label">Confirm Email:</label><input name="conf_email" type="text" class="form-control" required/>';
-        $ret .= '<label for="password" class="form-control-label">Password:</label><input name="password" type="password" class="form-control" required/>';
-        $ret .= '<label for="conf_password" class="form-control-label">Confirm Password:</label><input name="conf_password" type="password" class="form-control" required"/>';
-        $ret .= '<input type="hidden" name="focus" value="' . $focus . '"/>';
+        $ret .= '<label for="username" class="form-control-label">Username:</label><input name="username" type="text" value="' . $username . '" class="form-control" required />';
+        $ret .= '<label for="firstname" class="form-control-label">First Name:</label><input name="firstname" type="text" value="' . $firstname . '" class="form-control" required />';
+        $ret .= '<label for="lastname" class="form-control-label">Last Name:</label><input name="lastname" type="text" value="' . $lastname . '" class="form-control" required />';
+        $ret .= '<label for="email" class="form-control-label">Email:</label><input name="email" type="text" value="' . $email . '" class="form-control" required />';
+        $ret .= '<label for="conf_email" class="form-control-label">Confirm Email:</label><input name="conf_email" type="text" class="form-control" required />';
+        $ret .= '<label for="password" class="form-control-label">Password:</label><input name="password" type="password" class="form-control" required />';
+        $ret .= '<label for="conf_password" class="form-control-label">Confirm Password:</label><input name="conf_password" type="password" class="form-control" required" />';
         $ret .= '</form>';
         return $ret;
     }
