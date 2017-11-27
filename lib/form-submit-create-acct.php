@@ -26,40 +26,50 @@
      * database.
      * $continue just prevents ugly nested if statements.
      */
-    $successPage = '';
-    $failurePage = '';
+    $successPage = '/';
     $continue    = TRUE;
     
     //- Check if username is in use or invalid.
     if (!ctype_alnum($uname) && $continue) {
         $arr = array('error' => 'Username must be alphanumeric.',
                      'email' => $email,
-                     'focus' => 'username',
                      'firstname' => $fname,
                      'lastname' => $lname);
         echo genCreateForm($arr);
         $continue = FALSE;
+    }
+    
+    $statement = $db->prepare("SELECT * FROM `users`");
+    $statement->execute();
+    
+    while (($row = $statement->fetch()) && $continue) {
+        if (strtolower($row['username']) == strtolower($uname)) {
+            $arr = array('error' => 'Username in use, please use a different username.',
+                         'email' => $email,
+                         'firstname' => $fname,
+                         'lastname' => $lname);
+            echo genCreateForm($arr);
+            $continue = FALSE;
+        }
     }
     
     //- Check if email is in use or invalid.
     if (!filter_var($email, FILTER_VALIDATE_EMAIL) && $continue) {
         $arr = array('error' => 'Please enter a valid email address.',
                      'username' => $uname,
-                     'focus' => 'email',
                      'firstname' => $fname,
                      'lastname' => $lname);
         echo genCreateForm($arr);
         $continue = FALSE;
     }
     
-    $statement = $db->prepare('SELECT email,active FROM `users`;');
+    $statement = $db->prepare('SELECT * FROM `users`;');
     $result = $statement->execute();
     
-    while ($row = $statement->fetch() && $continue) {
-        if (strtolower($row['email']) == strtolower($email) && $row['active'] == 1) {
-            $arr = array('error' => 'Email in use, please use a different username.',
+    while (($row = $statement->fetch()) && $continue) {
+        if (strtolower($row['email']) == strtolower($email)) {
+            $arr = array('error' => 'Email in use, please use a different email.',
                          'username' => $uname,
-                         'focus' => 'email',
                          'firstname' => $fname,
                          'lastname' => $lname);
             echo genCreateForm($arr);
@@ -85,7 +95,6 @@
           ) && $continue) {
         $arr = array('error' => 'Password must contain at least 1 uppercase character, lowercase character, and number.',
                      'username' => $uname,
-                     'focus' => 'password',
                      'firstname' => $fname,
                      'lastname' => $lname,
                      'email' => $email);
@@ -97,7 +106,7 @@
     if ($password != $confPass && $continue) {
         $arr = array('error' => 'Passwords do not match.',
                      'username' => $uname,
-                     'focus' => 'password',
+                     'email' => $email,
                      'firstname' => $fname,
                      'lastname' => $lname);
         echo genCreateForm($arr);
@@ -111,8 +120,7 @@
     
     //- Submit the form (using function in auth-helpers.php) and redirect.
     if ($continue) {
-        if (createNewUser($username, $firstname, $lastname, strtolower($email), $password)) {
-            sendCreateSuccessEmail($emailArray)
+        if (createNewUser($uname, $fname, $lname, strtolower($email), $password)) {
             echo '<script>window.location = "' . $successPage . '"</script>';
         } else {
             echo '<script>window.location = "' . $successPage . '"</script>';
