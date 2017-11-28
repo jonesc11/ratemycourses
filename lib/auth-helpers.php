@@ -136,35 +136,4 @@
         return $ret;
     }
     
-    /*
-     * Sends an HTML email confirming that the user created an account.
-     * Returns false if email was not successful, true otherwise.
-     */
-    function sendCreateSuccessEmail($array) {
-        if (!is_array($array))
-            throw new Exception ("Input must be an array.");
-        
-        //- Load variables
-        $username = $array['username'];
-        $email = $array['email'];
-        $firstname = $array['firstname'];
-        $lastname = $array['lastname'];
-        
-        //- Create header information
-        $mail_subject = 'RateMyCourses Account Successfully Created!';
-        
-        $mail_headers = 'MIME-Version: 1.0' . "\r\n";
-        $mail_headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
-        $mail_headers .= 'From: no_reply@ratemycourses.com\r\n' . 'Reply-to: jonesc11@rpi.edu\r\nX-Mailer: PHP/' . phpversion();
-        
-        //- TO BE FILLED WITH HTML CONTENT
-        $mail_message = '';
-        
-        //- Send email, return appropriately.
-        if (mail($email, $mail_subject, $mail_message, $mail_headers))
-            return TRUE;
-        
-        return FALSE;
-    }
-    
 ?>
