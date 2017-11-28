@@ -1,9 +1,9 @@
 <?php
 
     //- Fill in fields as necessary.
-    $username = '';
+    $username = 'root';
     $password = '';
-    $host     = '';
+    $host     = 'localhost';
     $dbname   = 'ratemycourses';
     
     try{
@@ -21,6 +21,7 @@
     
     try {
         $sql = "CREATE DATABASE IF NOT EXISTS ratemycourses";
+
         $conn->exec($sql);
         $db = new PDO("mysql:host=" . $host . ";dbname=" . $dbname . ";charset=utf8", $username, $password, $options);
     } catch (PDOException $e) {
@@ -35,3 +36,5 @@
     
     //- Loads session variables. Due to this, make sure this script is included on every page.
     session_start();
+    require('create-tables.php');
+

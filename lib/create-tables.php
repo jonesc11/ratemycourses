@@ -1,6 +1,5 @@
 <?php
     
-    require_once ('db-connect.php');
     
     $errorMessage = "Error creating table: ";
     
@@ -41,13 +40,6 @@
     } catch (Exception $e) {
         die ($errorMessage . "courses");
     }
-    
-    $query  = 'CREATE TABLE IF NOT EXISTS votes (';
-    $query .= 'id varchar(8) NOT NULL,';
-    $query .= 'vote int NOT NULL,';
-    $query .= 'commentid varchar(8) NOT NULL,';
-    $query .= 'PRIMARY KEY(id)';
-    $query .= ');';
     
     try {
         $statement = $db->prepare($query);
