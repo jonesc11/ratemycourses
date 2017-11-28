@@ -4,6 +4,8 @@ body {
   background: rgb(226,226,226); /* Old browsers */
   background: -moz-linear-gradient(top, rgba(226,226,226,1) 0%, rgba(219,219,219,1) 50%, rgba(209,209,209,1) 51%, rgba(254,254,254,1) 100%); /* FF3.6-15 */
   background: -webkit-linear-gradient(top, rgba(226,226,226,1) 0%,rgba(219,219,219,1) 50%,rgba(209,209,209,1) 51%,rgba(254,254,254,1) 100%); /* Chrome10-25,Safari5.1-6 */
+  background-repeat: no-repeat;
+  background-attachment: fixed;
 }
 .container{
   width: 100%;
@@ -37,6 +39,7 @@ body {
   background-color: #e0d6f9;
   padding: 20px;
   height: 93vh;
+  position: fixed;
   overflow-y: scroll;
 }
 

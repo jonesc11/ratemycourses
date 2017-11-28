@@ -5,22 +5,24 @@
     <link rel="stylesheet" type="text/css" href="/lib/navbar.css">
   </head>
   <body>
-    <nav class="navbar navbar-light">
-      <a class="navbar-brand" href="/">RateMyCourses</a>
-      
-      <div id="navbarNavAltMarkup">
-        <div class="navbar-nav" id="menu">
-          <a class="nav-item nav-link" href="/">Home</a>
-          <a class="nav-item nav-link" data-toggle="modal" data-target="#login">Login</a>
-          <a class="nav-item nav-link hidden" href="#">Logout</a>
-          <a class="nav-item nav-link" data-toggle="modal" data-target="#signup">Sign up</a>
+    <div class="nav-container">
+      <nav class="navbar navbar-light">
+        <a class="navbar-brand" href="/">RateMyCourses</a>
+
+        <div id="navbarNavAltMarkup">
+          <div class="navbar-nav" id="menu">
+            <a class="nav-item nav-link" href="/">Home</a>
+            <a class="nav-item nav-link" data-toggle="modal" data-target="#login">Login</a>
+            <a class="nav-item nav-link hidden" href="#">Logout</a>
+            <a class="nav-item nav-link" data-toggle="modal" data-target="#signup">Sign up</a>
+          </div>
+          <form class="form-inline nav navbar-nav navbar-right">
+            <input id="search" class="form-control" type="text" placeholder="Search">
+            <button class="btn" type="submit">Search</button>
+          </form>
         </div>
-        <form class="form-inline nav navbar-nav navbar-right">
-          <input id="search" class="form-control" type="text" placeholder="Search">
-          <button class="btn" type="submit">Search</button>
-        </form>
-      </div>
-    </nav>
+      </nav>
+    </div>
     
     <div class="modal fade" id="login">
       <div class="modal-dialog" role="document">
