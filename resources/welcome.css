@@ -1,0 +1,63 @@
+@import url('https://fonts.googleapis.com/css?family=Barlow+Condensed');
+
+body {
+  background: rgb(226,226,226); /* Old browsers */
+  background: -moz-linear-gradient(top, rgba(226,226,226,1) 0%, rgba(219,219,219,1) 50%, rgba(209,209,209,1) 51%, rgba(254,254,254,1) 100%); /* FF3.6-15 */
+  background: -webkit-linear-gradient(top, rgba(226,226,226,1) 0%,rgba(219,219,219,1) 50%,rgba(209,209,209,1) 51%,rgba(254,254,254,1) 100%); /* Chrome10-25,Safari5.1-6 */
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+html, body {
+  height: 100%;
+  width: 100%;
+}
+
+.container{
+  width: 100%;
+  color: #000;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 20px;
+  font-weight: 30%;
+  padding: 0px;
+}
+
+.output-container {
+  width: 80%;
+  margin: auto;
+  margin-top: 20px;
+  background-color: #e0d6f9;
+  padding: 20px;
+  border: 1px solid black;
+  box-shadow: 0 8px 17px 0 rgba(0,0,0,.2), 0 6px 20px 0 rgba(0,0,0,.19);
+  margin-bottom: 50px;
+}
+
+.form {
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.form .btn {
+  margin-left: 20px;
+  margin-top: -3px;
+}
+
+.input-field {
+  width: 30%;
+  font-size: 16px;
+  height: 32px;
+}
+
+h1 {
+  margin: 0px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+h3 {
+  text-align: center;
+  font-size: 16px;
+  margin-top: 10px;
+}

@@ -1,0 +1,134 @@
+@import url('https://fonts.googleapis.com/css?family=Barlow+Condensed');
+
+body {
+  background: rgb(226,226,226); /* Old browsers */
+  background: -moz-linear-gradient(top, rgba(226,226,226,1) 0%, rgba(219,219,219,1) 50%, rgba(209,209,209,1) 51%, rgba(254,254,254,1) 100%); /* FF3.6-15 */
+  background: -webkit-linear-gradient(top, rgba(226,226,226,1) 0%,rgba(219,219,219,1) 50%,rgba(209,209,209,1) 51%,rgba(254,254,254,1) 100%); /* Chrome10-25,Safari5.1-6 */
+}
+.container{
+  width: 100%;
+  color: #000;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 20px;
+  font-weight: 30%;
+  padding: 0px;
+}
+
+.initial-view {
+  width: 80%;
+  height: 100%;
+  margin: auto;
+  background-color: #e0d6f9;
+  margin-top: 20px;
+  padding: 20px;
+  border: 1px solid black;
+  box-shadow: 0 8px 17px 0 rgba(0,0,0,.2), 0 6px 20px 0 rgba(0,0,0,.19);
+}
+
+.course {
+  -webkit-columns: 2;
+  -moz-columns: 2;
+  columns: 2;
+}
+
+.side-view {
+  width: 25%;
+  float: left;
+  background-color: #e0d6f9;
+  padding: 20px;
+  height: 93vh;
+  overflow-y: scroll;
+}
+
+li {
+	list-style: none;
+    cursor: pointer;
+}
+
+a {
+  color: #59217c;
+}
+
+html, body {
+  height: 100%;
+  width: 100%;
+}
+
+h1 {
+  margin: 0px;
+  margin-bottom: 10px;
+}
+
+h2 {
+  font-size: 28px;
+  margin: 0px;
+  border-bottom: 1px solid black;
+  margin-bottom: 10px;
+}
+
+h3 {
+  font-size: 16px;
+  margin-top: 10px;
+  text-align: center;
+}
+
+.display-school {
+  display: inline-block;
+  width: 100%;
+  float: left;
+  padding-right: 30px;
+  -webkit-column-break-inside: avoid;
+  -moz-column-break-inside: avoid;
+  page-break-inside: avoid;
+  break-inside: avoid;
+}
+
+.side-school {
+  width: 100%;
+  display: block;
+}
+
+::-webkit-scrollbar {
+    width: 5px;
+}
+ 
+/* Track */
+::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #59217c; 
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5); 
+}
+
+#courseinfo {
+  width: 75%;
+  float: right;
+}
+
+#major_container {
+  width: 80%;
+  margin: auto;
+  background-color: #e0d6f9;
+  margin-top: 20px;
+  padding: 20px;
+  border: 1px solid black;
+  box-shadow: 0 8px 17px 0 rgba(0,0,0,.2), 0 6px 20px 0 rgba(0,0,0,.19);
+}
+
+.major-code, .course-identifier {
+  font-weight: bold;
+}
+
+.no-results {
+  width: 80%;
+  height: 100%;
+  margin: auto;
+  background-color: #e0d6f9;
+  margin-top: 20px;
+  padding: 20px;
+  border: 1px solid black;
+  box-shadow: 0 8px 17px 0 rgba(0,0,0,.2), 0 6px 20px 0 rgba(0,0,0,.19);
+}
