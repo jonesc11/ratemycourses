@@ -26,4 +26,22 @@ $(document).ready(function () {
       alert("Error");
     });
   });
+  
+  $("#login-submit").on("click", function() {
+    var username_v = $("form[name=login] input[name=username]").val();
+    var password_v = $("form[name=login] input[name=password]").val();
+    
+    var request = $.ajax({
+      url: "/lib/form_submit_login.php",
+      type: "post",
+      data: {
+        username: username_v,
+        password: password_v,
+      }
+    }).done(function(data) {
+      $("#login_form").html(data);
+    }).fail(function() {
+      alert("Error");
+    });
+  });
 });

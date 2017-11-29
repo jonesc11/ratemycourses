@@ -92,6 +92,8 @@
 	//pulls database values and checks against hashed password
 
 	function isValid($id, $hash_password){
+        global $db;
+        
 		$isEmail = false;
 		
 		if(strpos($id,'@') !== false){
@@ -132,21 +134,25 @@
         
         if (isset($array['username']))
             $username = $array['username'];
+        
         //- Populate return variable (HTML form)
-   
 		$ret  = $error;
-		$ret .= '<form name="create-account" method="POST">';
-		$ret .= '<input name="username" type="text" value="' . $username . '" placeholder="Username" class="form-control" required/>';
-		$ret .= '<input name="password" type="password" placeholder="Password" class="form-control" required/>';
-		$ret .= '</form>';
-		$ret .= '<button class="btn btn-primary" id="submit-create">Submit</button>';
+		$ret .= '<form name="login">';
+        $ret .= '<div class="form-group">';
+        $ret .= '<label for="username" class="form-control-label">Username or Email Address:</label>';
+		$ret .= '<input name="username" type="text" value="' . $username . '" placeholder="Username or Email Address" class="form-control" />';
+        $ret .= '</div><div class="form-group">';
+        $ret .= '<label for="password" class="form-control-label">Password</label>';
+		$ret .= '<input name="password" type="password" placeholder="Password" class="form-control" />';
+        $ret .= '</div></form>';
 
         return $ret;
     }
 
 	//Logs in the user if uname or password is correct
 
-	function login($id,$password){
+	function login($id, $password){
+        global $db;
 		$isEmail = false;
 		
 		if(strpos($id,'@') !== false){
@@ -179,7 +185,7 @@
 		
 		$password = genHashedPassword($password,$salt);
 			
-		if(isValid($username,$password) == true){
+		if(isValid($id,$password) == true){
 			$_SESSION["user"]["id"] = $row["id"];
 			$_SESSION["user"]["firstname"] = $row["firstname"];
 			$_SESSION["user"]["lastname"] = $row["lastname"];
