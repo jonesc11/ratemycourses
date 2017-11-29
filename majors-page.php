@@ -40,7 +40,8 @@
           } 
         ?>
       <div id="courseinfo">
-        <div id="major_container">  
+        <div id="major_container"> 
+          <input type="hidden" name="schoolid" value="<?php echo $_GET['s']; ?>" />
         </div>
       </div>
     </div>

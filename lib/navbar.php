@@ -12,9 +12,14 @@
         <div id="navbarNavAltMarkup">
           <div class="navbar-nav" id="menu">
             <a class="nav-item nav-link" href="/">Home</a>
-            <a class="nav-item nav-link" data-toggle="modal" data-target="#login">Login</a>
-            <a class="nav-item nav-link hidden" href="#">Logout</a>
-            <a class="nav-item nav-link" data-toggle="modal" data-target="#signup">Sign up</a>
+            <?php
+              if (isset($_SESSION['user'])) {
+                echo '<a class="nav-item nav-link" href="/lib/logout.php">Logout</a>';
+              } else {
+                echo '<a class="nav-item nav-link" data-toggle="modal" data-target="#login">Login</a>';
+                echo '<a class="nav-item nav-link" data-toggle="modal" data-target="#signup">Sign up</a>';
+              }
+            ?>
           </div>
           <form class="form-inline nav navbar-nav navbar-right">
             <input id="search" class="form-control" type="text" placeholder="Search">
@@ -34,20 +39,13 @@
             </button>
           </div>
           <div class="modal-body">
-            <form>
-              <div class="form-group">
-                <label for="username" class="form-control-label">Username:</label>
-                <input type="text" class="form-control" id="username">
-              </div>
-              <div class="form-group">
-                <label for="password" class="form-control-label">Password:</label>
-                <input type="password" class="form-control" id="password">
-              </div>
-            </form>
+            <div id="login_form">
+              <?php echo genLoginForm(array()); ?>
+            </div>
           </div>
           <div class="modal-footer">
             <p class="redirect-text">Don't have an account? <a class="redirect">Sign up now!</a></p>
-            <button type="button" class="btn">Login</button>
+            <button type="button" class="btn" id="login-submit">Login</button>
           </div>
         </div>
       </div>

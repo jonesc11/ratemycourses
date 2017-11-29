@@ -66,18 +66,19 @@
      * span with class 'course-identifier'. Gets all the courses under the major code
      * specified in the parameters.
      */
+
     if(isset($_POST['major']) && isset($_POST['schoolid'])) {
-      echo getNavPerMajor($_POST['major']);
+      echo getNavPerMajor($_POST['major'], $_POST['schoolid']);
     }
 
-    function getNavPerMajor($majorCode) {
+    function getNavPerMajor($majorCode, $schoolid) {
         $ret = '';
         
         global $db;
         
         //- Execute SQL statement.
-        $statement = $db->prepare('SELECT * FROM `courses` WHERE `major` = :major');
-        $result = $statement->execute(array (':major' => $majorCode));
+        $statement = $db->prepare('SELECT * FROM `courses` WHERE `major` = :major AND `schoolid` = :schoolid');
+        $result = $statement->execute(array (':major' => $majorCode, ':schoolid' => $schoolid));
         
         $courses = array();
         
