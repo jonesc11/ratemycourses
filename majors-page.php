@@ -39,6 +39,7 @@
               echo getMajorNav(trim($_GET['s']));
           } 
         ?>
+      <input type="hidden" name="schoolid" value="<?php echo $_GET['s']; ?>" />
       <div id="courseinfo">
         <div id="major_container"> 
           <input type="hidden" name="schoolid" value="<?php echo $_GET['s']; ?>" />
