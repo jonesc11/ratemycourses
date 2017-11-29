@@ -11,7 +11,6 @@
      * NOT IMPLEMENTED: Function to generate the form and any errors associated with it.
      *                  Errors will use Bootstrap alerts.
      */
-    
     $fname     = trim($_POST['firstname']);
     $lname     = trim($_POST['lastname']);
     $uname     = trim($_POST['username']);
