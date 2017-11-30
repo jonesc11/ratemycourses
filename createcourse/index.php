@@ -87,9 +87,9 @@
         </form>
         <h2>View Existing Courses</h2>
         <form class="form" action="/lib/form-submit-get-courses.php" method="POST">
-          <label>University: </label>
+          <label class="school-label">University: </label>
           <?php echo getSchoolSelect(); ?>
-          <input class="btn" type="submit" name="submit" value="Get Courses" />
+          <input class="btn school-btn" type="submit" name="submit" value="Get Courses" />
         </form>
         <?php
           if (isset($_GET['s'])) {

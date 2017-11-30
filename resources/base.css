@@ -27,19 +27,17 @@ body {
   box-shadow: 0 8px 17px 0 rgba(0,0,0,.2), 0 6px 20px 0 rgba(0,0,0,.19);
 }
 
-.course {
-  -webkit-columns: 2;
-  -moz-columns: 2;
-  columns: 2;
+.courses {
+  -webkit-columns: 1;
+  -moz-columns: 1;
+  columns: 1;
 }
 
 .side-view {
-  width: 25%;
+  width: 100%;
   float: left;
   background-color: #e0d6f9;
   padding: 20px;
-  height: 93vh;
-  position: fixed;
   overflow-y: scroll;
 }
 
@@ -107,7 +105,7 @@ h3 {
 }
 
 #courseinfo {
-  width: 75%;
+  width: 100%;
   float: right;
 }
 
@@ -119,6 +117,7 @@ h3 {
   padding: 20px;
   border: 1px solid black;
   box-shadow: 0 8px 17px 0 rgba(0,0,0,.2), 0 6px 20px 0 rgba(0,0,0,.19);
+  margin-bottom: 30px;
 }
 
 .major-code, .course-identifier {
@@ -134,4 +133,31 @@ h3 {
   padding: 20px;
   border: 1px solid black;
   box-shadow: 0 8px 17px 0 rgba(0,0,0,.2), 0 6px 20px 0 rgba(0,0,0,.19);
+}
+
+.ul-school {
+  padding-left: 10px;
+}
+
+@media only screen and (min-width: 700px) {
+  .courses {
+    -webkit-columns: 2;
+    -moz-columns: 2;
+    columns: 2;
+  }
+  
+  .side-view {
+    width: 25%;
+    float: left;
+    background-color: #e0d6f9;
+    padding: 20px;
+    height: 93vh;
+    position: fixed;
+    overflow-y: scroll;
+  }
+  
+  #courseinfo {
+    width: 75%;
+    float: right;
+  }
 }

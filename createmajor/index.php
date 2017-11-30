@@ -89,7 +89,7 @@
         <form class="form" action="/lib/form-submit-get-majors.php" method="POST">
           <label>University: </label>
           <?php echo getSchoolSelect(); ?>
-          <input class="btn" type="submit" name="submit" value="Get Majors" />
+          <input class="btn school-btn" type="submit" name="submit" value="Get Majors" />
         </form>
         <?php
           if (isset($_GET['s'])) {

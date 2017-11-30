@@ -2,7 +2,7 @@ $(document).ready(function() {
     $("#courseinfo").hide();
     $(".major-link").click(function(e) {
         $("#coursenav-container").removeClass("initial-view").addClass("side-view");
-        $("#coursenav").removeClass("course");
+        $("#coursenav").removeClass("courses");
         $(".display-school").removeClass("display-school").addClass("side-school");
         
         var code = e.currentTarget.title;
@@ -20,5 +20,7 @@ $(document).ready(function() {
         }).fail(function() {
           alert("Error");
         });
+      
+        window.location.hash = '#courseinfo';
     }); 
 });

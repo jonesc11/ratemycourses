@@ -146,7 +146,7 @@
         $statement = $db->prepare("SELECT * FROM `schools` ORDER BY `name`");
         $statement->execute();
         
-        $ret  = '<select class="input-field" name="school">';
+        $ret  = '<select class="school-input-field" name="school">';
         $ret .= '<option value="-1" selected>-- SELECT A SCHOOL --</option>';
         
         while ($school = $statement->fetch()) {
