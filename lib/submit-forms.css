@@ -50,13 +50,28 @@ h2 {
 }
 
 .input-field {
-  width: 30%;
+  width: 100%;
+  font-size: 16px;
+  height: 32px;
+}
+
+.school-input-field {
+  width: 100%;
   font-size: 16px;
   height: 32px;
 }
 
 td, th {
-  padding-right: 30px;
+  padding-right: 10px;
+}
+
+.create-major td, .create-major th {
+  display: block;
+  padding-right: 0px;
+}
+
+.create-major {
+  width: 100%;
 }
 
 .create-major .input-field {
@@ -76,14 +91,75 @@ td, th {
   overflow-x: hidden;
   resize: none;
   font-size: 16px;
-  margin-left: 20px;
+  margin-left: 10px;
+  width: 100%;
 }
 
 .comment-container {
-  height: 100px;
+  height: 140px;
   margin-top: 20px;
 }
 
 .left-align {
   margin-left: 0px!important;
+}
+
+.input-field select {
+  border: 1px solid black;
+}
+
+.school-btn {
+  margin-top: 5px!important;
+  margin-left: 0px!important;
+  display: block;
+}
+
+.school-label {
+  display: block;
+}
+
+@media only screen and (min-width: 650px) {
+  .create-major td, .create-major th {
+    padding-right: 30px;
+    display: table-cell;
+  }
+  
+  .comment {
+    overflow-x: hidden;
+    resize: none;
+    font-size: 16px;
+    margin-left: 20px;
+    width: inherit;
+  }
+  
+  .create-major {
+    width: inherit;
+  }
+
+  td, th {
+    padding-right: 30px;
+  }
+  
+  .school-input-field {
+    width: auto;
+    font-size: 16px;
+    height: 32px;
+    margin-bottom: 10px;
+  }
+  
+  .school-btn {
+    margin-top: -3px!important;
+    margin-left: 20px!important;
+    display: inline-block;
+  }
+  
+  .school-label {
+    display: inline-block;
+  }
+  
+  .input-field {
+    width: 30%;
+    font-size: 16px;
+    height: 32px;
+  }
 }

@@ -39,7 +39,7 @@
         $schoolname = $statement->fetch();
       
         //- Loops
-        $ret .= '<div id="coursenav-container" class="initial-view"><h1>' . ucwords(strtolower($schoolname['name'])) . '</h1><div id ="coursenav" class="course">';
+        $ret .= '<div id="coursenav-container" class="initial-view"><h1>' . ucwords(strtolower($schoolname['name'])) . '</h1><div id ="coursenav" class="courses">';
         foreach ($arr as $code => $school) {
             $name = $school['name'];
             $majors = $school['majors'];
@@ -48,7 +48,7 @@
             $ret .= '<div id="display-' . $code . '" class="display-school">';
             $ret .= '<h2 class="school-name">' . ucwords($name) . '</h2><ul class="ul-school">';
             foreach ($majors as $majorCode => $majorName) {
-                $ret .= '<li class="li-major"><a class="major-link" title="' . strtoupper($majorCode) . '"><span class="major-code">' . strtoupper($majorCode) . ' </span>' . ucwords($majorName) . '</a></li>';
+                $ret .= '<li class="li-major"><a href="#courseinfo" class="major-link" title="' . strtoupper($majorCode) . '"><span class="major-code">' . strtoupper($majorCode) . ' </span>' . ucwords($majorName) . '</a></li>';
             }
             $ret .= '</div>';
         }

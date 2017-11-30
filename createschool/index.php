@@ -29,7 +29,7 @@
         <form class="form" action="/lib/form-submit-create-school.php" method="POST">
           <label>School Name: </label><br/>
           <input class="input-field" type="text" name="schoolname" placeholder="School Name" required />
-          <input class="btn" type="submit" name="submit" value="Create School" />
+          <input class="btn school-btn" type="submit" name="submit" value="Create School" />
         </form>
         <h2>Existing Schools</h2>
         <?php
