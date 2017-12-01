@@ -326,7 +326,7 @@
         $statement->execute(array(':id' => $school));
         
         if ($schoolRow = $statement->fetch()) {
-            $ret .= '<h1>' . $schoolRow['name'] . '</h1>';
+            $ret .= '<h1>' . ucwords(strtolower($schoolRow['name'])) . '</h1>';
             
             $statement = $db->prepare("SELECT * FROM `courses` WHERE `schoolid` = :schoolid ORDER BY `major`, `coursenum`");
             $statement->execute(array(':schoolid' => $school));
@@ -417,7 +417,7 @@
         $statement->execute(array(':id' => $school));
         
         if ($schoolRow = $statement->fetch()) {
-            $ret .= '<h1>' . $schoolRow['name'] . '</h1>';
+            $ret .= '<h1>' . ucwords(strtolower($schoolRow['name'])) . '</h1>';
             
             $statement = $db->prepare("SELECT * FROM `majors` WHERE `schoolid` = :schoolid ORDER BY `school`, `major`");
             $statement->execute(array(':schoolid' => $school));
