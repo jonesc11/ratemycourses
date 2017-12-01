@@ -222,7 +222,7 @@
                 foreach ($comments as $comment) {
                     if ($counter >= $offset && $counter < $offset + 25) {
                         $ret['content'] .= '<div class="comment">';
-                        $ret['content'] .= '<em>' . $comment['userid'] . '</em>'; 
+                        $ret['content'] .= '<em>User Rating</em>'; 
                         $ret['content'] .= '<div class="comment-ratings">';
                         $ret['content'] .= '<table class="ratings-averages"><th>Difficulty:</th><th>Workload:</th><th>Attendance:</th><th>Interesting:</th>
                         <tr><td>' . $comment['rating1'] . ' / 5</td><td>' . $comment['rating2'] . '/ 5</td><td>' . $comment['rating3'] . '/ 5</td><td>' . $comment['rating4'] . '/ 5</td></tr></table>';
