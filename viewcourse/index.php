@@ -27,11 +27,11 @@
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="/resources/navbar-ajax.js"></script>
-    <link rel="stylesheet" href="viewcourse.css">
+    <link rel="stylesheet" href="/resources/viewcourse.css">
   </head>
   <body>
     <?php 
-      include('../lib/navbar.php');
+      include('../resources/navbar.php');
     ?>
     <div class="container">
       <div class="output-container">

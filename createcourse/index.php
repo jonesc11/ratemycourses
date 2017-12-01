@@ -19,11 +19,11 @@
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="/resources/navbar-ajax.js"></script>
-    <link rel="stylesheet" href="../lib/submit-forms.css">
+    <link rel="stylesheet" href="../resources/submit-forms.css">
   </head>
   <body>
     <?php
-      include('../lib/navbar.php');
+      include('../resources/navbar.php');
       if (isset($_GET['e'])) {
           switch ($_GET['e']) {
               case 's':

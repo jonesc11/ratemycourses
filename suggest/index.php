@@ -18,11 +18,11 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="../lib/submit-forms.css">
+    <link rel="stylesheet" href="../resources/submit-forms.css">
   </head>
   <body>
     <?php
-      include('../lib/navbar.php');
+      include('../resources/navbar.php');
       if (isset($_GET['s']) && $_GET['s'] == 't')
           echo '<div class="alert alert-success">Suggestion successfully created.</div>';
     ?>

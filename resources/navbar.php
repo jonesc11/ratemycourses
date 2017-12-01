@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<?php require_once(__DIR__ . DIRECTORY_SEPARATOR . 'auth-helpers.php'); ?>
+<?php require_once(__DIR__ . DIRECTORY_SEPARATOR . '../lib/auth-helpers.php'); ?>
 <html>
   <head>
-    <link rel="stylesheet" type="text/css" href="/lib/navbar.css">
+    <link rel="stylesheet" type="text/css" href="/resources/navbar.css">
   </head>
   <body>
     <div class="nav-container">

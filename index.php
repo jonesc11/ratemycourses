@@ -16,7 +16,7 @@
     <link rel="stylesheet" href="/resources/welcome.css">
   </head>
   <body>
-    <?php include('lib/navbar.php'); ?>
+    <?php include('/resources/navbar.php'); ?>
     <div class="container">
       <div class="output-container">
         <h1>Welcome to Rate My Courses!</h1>

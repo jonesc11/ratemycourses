@@ -15,7 +15,7 @@
   </head>
   <body>
     <?php 
-      include('lib/navbar.php');
+      include('/resources/navbar.php');
       if (isset($_GET['e'])) {
             switch ($_GET['e']) {
                 case 's':
