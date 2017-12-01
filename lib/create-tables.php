@@ -105,7 +105,7 @@
     $query  = 'CREATE TABLE IF NOT EXISTS majors (';
     $query .= 'id varchar(8) NOT NULL,';
     $query .= 'major varchar(10) NOT NULL,';
-    $query .= 'school varchar(20) NOT NULL,';
+    $query .= 'school varchar(50) NOT NULL,';
     $query .= 'name varchar(50) NOT NULL,';
     $query .= 'schoolid varchar(8) NOT NULL,';
     $query .= 'PRIMARY KEY(id)';
