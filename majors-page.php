@@ -15,7 +15,7 @@
   </head>
   <body>
     <?php 
-      include('/resources/navbar.php');
+      include(__DIR__ . DIRECTORY_SEPARATOR . 'resources' . DIRECTORY_SEPARATOR . 'navbar.php');
       if (isset($_GET['e'])) {
             switch ($_GET['e']) {
                 case 's':

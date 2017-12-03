@@ -22,7 +22,7 @@
     <link rel="stylesheet" href="../resources/submit-forms.css">
   </head>
   <body>
-    <?php include('../resources/navbar.php'); ?>
+    <?php require(__DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'resources' . DIRECTORY_SEPARATOR . 'navbar.php'); ?>
     <div class="container">
       <div class="output-container">
         <h2>Create a School</h2>

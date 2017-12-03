@@ -31,7 +31,7 @@
   </head>
   <body>
     <?php 
-      include('../resources/navbar.php');
+      require(__DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'resources' . DIRECTORY_SEPARATOR . 'navbar.php');
     ?>
     <div class="container">
       <div class="output-container">

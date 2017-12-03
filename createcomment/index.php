@@ -35,7 +35,7 @@
   </head>
   <body>
     <?php
-      include('../resources/navbar.php');
+      require(__DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'resources' . DIRECTORY_SEPARATOR . 'navbar.php');
       if ($coursename === null) {
           echo '<div id="content">';
           echo '<h1>Course not found.</h1>';

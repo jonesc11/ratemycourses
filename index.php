@@ -16,7 +16,7 @@
     <link rel="stylesheet" href="/resources/welcome.css">
   </head>
   <body>
-    <?php require('resources/navbar.php'); ?>
+    <?php require(__DIR__ . DIRECTORY_SEPARATOR . 'resources' . DIRECTORY_SEPARATOR . 'navbar.php'); ?>
     <div class="container">
       <div class="output-container">
         <h1>Welcome to Rate My Courses!</h1>

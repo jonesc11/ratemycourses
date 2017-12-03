@@ -22,7 +22,7 @@
   </head>
   <body>
     <?php
-      include('../resources/navbar.php');
+      require(__DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'resources' . DIRECTORY_SEPARATOR . 'navbar.php');
       if (isset($_GET['s']) && $_GET['s'] == 't')
           echo '<div class="alert alert-success">Suggestion successfully created.</div>';
     ?>
