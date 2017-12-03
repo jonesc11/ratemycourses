@@ -26,6 +26,8 @@
      * Returns the next Hex ID.
      */
     function getNextId() {
+        global $db, $dbname;
+        
         $query = "SELECT `id` FROM {$dbname}.`users`;";
         $statement = $db->prepare($query);
         $result = $statement->execute();
@@ -210,6 +212,9 @@
      * Bootstrap alert with any errors (if any errors exist).
      */
     function genCreateForm($array) {
+        global $db;
+        global $dbname;
+        
         if (!is_array($array))
             throw new Exception ("Input must be an array.");
         
