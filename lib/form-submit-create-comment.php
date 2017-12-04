@@ -12,9 +12,9 @@
      * are not specified will simply be null, and will not play into any averages.
      */
     
-    $courseid = $_POST['courseid'];
-    $comment  = $_POST['comment'];
-    $userid   = $_POST['userid'];
+    $courseid = strip_tags($_POST['courseid']);
+    $comment  = strip_tags($_POST['comment']);
+    $userid   = strip_tags($_POST['userid']);
     $rating1  = null;
     $rating2  = null;
     $rating3  = null;
@@ -22,15 +22,15 @@
     $rating5  = null;
     
     if (isset($_POST['rating1']))
-        $rating1 = $_POST['rating1'];
+        $rating1 = strip_tags($_POST['rating1']);
     if (isset($_POST['rating2']))
-        $rating2 = $_POST['rating2'];
+        $rating2 = strip_tags($_POST['rating2']);
     if (isset($_POST['rating3']))
-        $rating3 = $_POST['rating3'];
+        $rating3 = strip_tags($_POST['rating3']);
     if (isset($_POST['rating4']))
-        $rating4 = $_POST['rating4'];
+        $rating4 = strip_tags($_POST['rating4']);
     if (isset($_POST['rating5']))
-        $rating5 = $_POST['rating5'];
+        $rating5 = strip_tags($_POST['rating5']);
     
     $ratingParam = array('rating1' => $rating1, 'rating2' => $rating2, 'rating3' => $rating3, 'rating4' => $rating4, 'rating5' => $rating5);
     $ratingId = createRating($ratingParam);

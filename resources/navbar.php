@@ -25,9 +25,9 @@
               }
             ?>
           </div>
-          <form class="form-inline nav navbar-nav navbar-right">
-            <input id="search" class="form-control" type="text" placeholder="Search">
-            <button class="btn" type="submit">Search</button>
+          <form class="form-inline nav navbar-nav navbar-right" method="POST" action="/lib/form-submit-search.php">
+            <input id="search" class="form-control" type="text" placeholder="Search" name="search-text" />
+            <button class="btn" type="submit" name="submit-search">Search</button>
           </form>
         </div>
       </nav>

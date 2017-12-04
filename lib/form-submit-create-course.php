@@ -20,22 +20,22 @@
     
     
     if (isset($_POST['school']) && $_POST['school'] != -1)
-        $schoolid = $_POST['school'];
+        $schoolid = strip_tags($_POST['school']);
     else
         header ('Location: /createcourse?e=s');
     
     if (isset($_POST['coursename']) && $_POST['coursename'] != '')
-        $coursename = $_POST['coursename'];
+        $coursename = strip_tags($_POST['coursename']);
     else
         header ('Location: /createcourse?e=c');
     
     if (isset($_POST['major']) && $_POST['major'] != '')
-        $major = $_POST['major'];
+        $major = strip_tags($_POST['major']);
     else
         header ('Location: /createcourse?e=m');
     
     if (isset($_POST['coursenum']) && is_numeric($_POST['coursenum']))
-        $coursenum = $_POST['coursenum'];
+        $coursenum = strip_tags($_POST['coursenum']);
     else
         header ('Location: /createcourse?e=n');
     

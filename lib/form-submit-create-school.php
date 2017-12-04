@@ -10,7 +10,7 @@
     
     $courseid = $_POST['schoolname'];
     
-    $schoolParam = array('schoolname' => $_POST['schoolname']);
+    $schoolParam = array('schoolname' => strip_tags($_POST['schoolname']));
     createSchool($schoolParam);
     
     header ('Location: /createschool');
