@@ -122,7 +122,7 @@
         
         $ret['content']  = '<div id="content">';
         $ret['content'] .= '<h2>Course not found.</h2>';
-        $ret['content'] .= '<p><a href="/welcome.php">Click here to return to main page.</a></p>';
+        $ret['content'] .= '<p><a href="/index.php">Click here to return to main page.</a></p>';
         $ret['content'] .= '</div>';
         
         return $ret;
