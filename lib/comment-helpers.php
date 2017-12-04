@@ -276,8 +276,13 @@
         $ret = '<table> <tr><th><h3> Flagged Comment </h3></th> <th> <h3>Username </h3></th><th><h3>Actions </h3></th></tr>';
         
         while ($flagged = $statement->fetch()) {
+            $statement = $db->prepare("SELECT * FROM `users` WHERE `id` = :id");
+            $statement->execute(array(':id' => $flagged['userid']));
+            
+            $user = $statement->fetch();
+            
             $ret .= '<tr><td>' . $flagged['comment'] . '</td>';
-            $ret .= '<td>' . $flagged['userid'] . '</td>';
+            $ret .= '<td>' . $user['username'] . '</td>';
             $ret .= '<td><form action="/lib/form-submit-comment-actions.php" method="POST"> <input id = "Reg" type="radio" name="flagged"  value="Delete Comment"> Delete Comment<br> <input id = "Mod"type="radio" name="flagged"  value="Unflag Comment"> Unflag Comment<input type="hidden" name="id" value="' . $flagged['id'] . '" /> <br> <input class = "btn"type="submit" value="Submit"> </form> <br> </form> </td></tr>';
         } 
         $ret .= '</table>';
