@@ -31,8 +31,8 @@
         <h2>Make a Suggestion</h2>
         <form class="form" action="/lib/form-submit-suggestions.php" method="POST">
         <?php
-            if (isset($_SESSION['user']['username']))
-                echo '<input type="hidden" name="userid" value="' . $_SESSION['user']['username'] . '" />';
+            if (isset($_SESSION['user']['id']))
+                echo '<input type="hidden" name="userid" value="' . $_SESSION['user']['id'] . '" />';
         ?>
           <table class ="create-major">
             <tr>

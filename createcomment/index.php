@@ -48,7 +48,7 @@
         <h2>Add a Rating for <?php echo $coursename; ?></h2>
         <form class="form" action="/lib/form-submit-create-comment.php" method="POST">
           <input type="hidden" name="courseid" value="<?php echo $_GET['c']; ?>" />
-          <input type="hidden" name="userid" value="<?php echo $_SESSION['user']['username'] ?>" />
+          <input type="hidden" name="userid" value="<?php echo $_SESSION['user']['id'] ?>" />
           <table>
             <tr>
               <td>

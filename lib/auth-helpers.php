@@ -257,7 +257,6 @@
 			$_SESSION["user"]["id"] = $row["id"];
 			$_SESSION["user"]["firstname"] = $row["firstname"];
 			$_SESSION["user"]["lastname"] = $row["lastname"];
-			$_SESSION["user"]["password"] = $row["password"];
 			$_SESSION["user"]["username"] = $row["username"];
 			$_SESSION["user"]["email"] = $row["email"];
 			$_SESSION["user"]["permissions"] = $row["permissions"];
