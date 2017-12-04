@@ -52,7 +52,7 @@
           <table>
             <tr>
               <td>
-                <label>Difficulty (1 - good luck not dropping, 5 - easy A):</label>
+                <label>Easiness (1 - good luck not dropping, 5 - easy A):</label>
               </td>
               <td>
                 <select class="dropdown" name="rating1">
@@ -66,7 +66,7 @@
             </tr>
             <tr>
               <td>
-                <label>Workload (1 - no sleep, 5 - little to no homework):</label>
+                <label>Free Time (1 - lots of homework, 5 - little to no homework):</label>
               </td>
               <td>
                 <select class="dropdown" name="rating2">
@@ -80,7 +80,7 @@
             </tr>
             <tr>
               <td>
-                <label>Attendance (1 - critical, 5 - unecessary):</label>
+                <label>Skippability (1 - attendenace required, 5 - never went to class):</label>
               </td>
               <td>
                 <select class="dropdown" name="rating3">

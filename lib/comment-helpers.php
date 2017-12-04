@@ -207,7 +207,7 @@
                 $ret['content']  = '<div id="content">';
                 $ret['content'] .= '<h1><strong>' . $course['major'] . ' ' . $course['coursenum'] . ' -</strong> ' . $course['coursename'] . '<a href="../majors-page.php/?s=' . $course['schoolid'] . '" class="btn return">Return to School</a></h1>';
                 $ret['content'] .= '<div class="averages-container"><h2>Overall Average: ' . number_format($average, 2) . '</h2>';
-                $ret['content'] .= '<table class="ratings-averages"><th>Difficulty:</th><th>Workload:</th><th>Attendance:</th><th>Interesting:</th>
+                $ret['content'] .= '<table class="ratings-averages"><th>Easiness:</th><th>Free Time:</th><th>Skippability:</th><th>Interesting:</th>
                 <tr><td>' . number_format($ratings[0],1) . ' / 5</td><td>' . number_format($ratings[1],1) . '/ 5</td><td>' . number_format($ratings[2],1) . '/ 5</td><td>' . number_format($ratings[3],1) . '/ 5</td></tr></table>';
                 $ret['content'] .= '<div class="rating-image-container"><h3>Your Verdict:</h3><img class="rating-image" src="/resources/images/rating'. round($average) . '.jpg" alt="Rating image"/></div></div>';
 //                $ret['content'] .= '<h3>Difficulty:</h3><p>' . number_format($ratings[0],1) . ' / 5</p>';
@@ -224,7 +224,7 @@
                         $ret['content'] .= '<div class="comment">';
                         $ret['content'] .= '<em>User Rating</em>'; 
                         $ret['content'] .= '<div class="comment-ratings">';
-                        $ret['content'] .= '<table class="ratings-averages"><th>Difficulty:</th><th>Workload:</th><th>Attendance:</th><th>Interesting:</th>
+                        $ret['content'] .= '<table class="ratings-averages"><th>Easiness:</th><th>Free Time:</th><th>Skippability</th><th>Interesting:</th>
                         <tr><td>' . $comment['rating1'] . ' / 5</td><td>' . $comment['rating2'] . '/ 5</td><td>' . $comment['rating3'] . '/ 5</td><td>' . $comment['rating4'] . '/ 5</td></tr></table>';
                         $ret['content'] .= '</div>';
                         $ret['content'] .= '<div class="comment-content"><strong>Comment:</strong> ';
