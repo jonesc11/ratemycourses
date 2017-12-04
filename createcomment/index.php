@@ -66,7 +66,7 @@
             </tr>
             <tr>
               <td>
-                <label>Workload (1 - no sleep, 5 - little to know homework):</label>
+                <label>Workload (1 - no sleep, 5 - little to no homework):</label>
               </td>
               <td>
                 <select class="dropdown" name="rating2">
