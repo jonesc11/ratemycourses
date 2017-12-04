@@ -276,7 +276,6 @@
             $ret .= '<tr><td>' . $flagged['comment'] . '</td>';
             $ret .= '<td>' . $flagged['userid'] . '</td>';
             $ret .= '<td><form action="/lib/form-submit-comment-actions.php" method="POST"> <input id = "Reg" type="radio" name="flagged"  value="Delete Comment"> Delete Comment<br> <input id = "Mod"type="radio" name="flagged"  value="Unflag Comment"> Unflag Comment<input type="hidden" name="id" value="' . $flagged['id'] . '" /> <br> <input class = "btn"type="submit" value="Submit"> </form> <br> </form> </td></tr>';
-
         } 
         $ret .= '</table>';
         
