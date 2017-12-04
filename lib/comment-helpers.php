@@ -250,22 +250,25 @@
         
         return $ret;
     }
+    //Flags a comment for moderations
     function flagComment($commentid){
         global $db;
         $statement = $db->prepare("UPDATE `comments` SET `flagged`= 1 WHERE `id`=:id;");
         $statement->execute(array(':id'=>$commentid));
     }
+    //Unflags a comment
     function unflagComment($commentid){
         global $db;
         $statement = $db->prepare("UPDATE `comments` SET `flagged`= 0 WHERE `id`=:id;");
         $statement->execute(array(':id'=>$commentid));
     }
+    //Deletes a comment
     function deleteComment($commentid){
         global $db;
         $statement = $db->prepare("DELETE From `comments` WHERE `id`=:id;");
         $statement->execute(array(':id'=>$commentid));
     }
-
+    //View all the flagged comments
     function getflaggedComments(){
         global $db;
         $statement = $db->prepare("SELECT * from `comments`WHERE `flagged`=1;");
