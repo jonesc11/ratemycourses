@@ -336,7 +336,7 @@
             while ($course = $statement->fetch()) {
                 $ret .= '<tr><td>' . $course['coursename'] . '</td>';
                 $ret .= '<td>' . $course['major'] . '</td>';
-                $ret .= '<td>' . $course['coursenum'] . '</td></tr>';
+                $ret .= '<td>' . $course['coursenum'] . '</td>';
                 $ret .= '<td><form method="POST" action="/lib/form-submit-course-delete.php"><input class="btn" type="submit" name="delete" value="Delete Course" /><input type="hidden" name="id" value="' . $course['id'] . '" /></form> </td> </tr>';
             }
             
@@ -428,7 +428,7 @@
             while ($major = $statement->fetch()) {
                 $ret .= '<tr><td>' . $major['name'] . '</td>';
                 $ret .= '<td>' . $major['major'] . '</td>';
-                $ret .= '<td>' . $major['school'] . '</td></tr>';
+                $ret .= '<td>' . $major['school'] . '</td>';
                 $ret .= '<td><form method="POST" action="/lib/form-submit-major-delete.php"><input class="btn" type="submit" name="delete" value="Delete Major" /><input type="hidden" name="id" value="' . $major['id'] . '" /></form> </td> </tr>';
             }
             

@@ -4,7 +4,7 @@
     require_once(__DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'lib' . DIRECTORY_SEPARATOR . 'comment-helpers.php');
     
     if (!isset($_SESSION['user']))
-      header ("Location: /login");
+      header ("Location: /");
     
     if (isset($_GET['c'])) {
         $coursename = getCourseName($_GET['c']);
@@ -52,7 +52,7 @@
           <table>
             <tr>
               <td>
-                <label>Difficulty (1 - easy A, 5 - good luck not dropping):</label>
+                <label>Difficulty (1 - good luck not dropping, 5 - easy A):</label>
               </td>
               <td>
                 <select class="dropdown" name="rating1">
@@ -66,7 +66,7 @@
             </tr>
             <tr>
               <td>
-                <label>Workload (1 - little to no homework, 5 - no sleep):</label>
+                <label>Workload (1 - no sleep, 5 - little to no homework):</label>
               </td>
               <td>
                 <select class="dropdown" name="rating2">
@@ -80,7 +80,7 @@
             </tr>
             <tr>
               <td>
-                <label>Attendance (1 - unnecessary, 5 - critical):</label>
+                <label>Attendance (1 - critical, 5 - unecessary):</label>
               </td>
               <td>
                 <select class="dropdown" name="rating3">
