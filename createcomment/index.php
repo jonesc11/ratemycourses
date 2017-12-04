@@ -3,9 +3,8 @@
     require_once(__DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'lib' . DIRECTORY_SEPARATOR . 'db-connect.php');
     require_once(__DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'lib' . DIRECTORY_SEPARATOR . 'comment-helpers.php');
     
-    if (!isset($_SESSION['user']) /*|| $_SESSION['user']['active'] != 1*/)
-      //  header ("Location: /login");
-        $_SESSION['user']['username'] = "collin"; // REMEMBER TO REMOVE THIS
+    if (!isset($_SESSION['user']))
+      header ("Location: /login");
     
     if (isset($_GET['c'])) {
         $coursename = getCourseName($_GET['c']);
@@ -39,7 +38,7 @@
       if ($coursename === null) {
           echo '<div id="content">';
           echo '<h1>Course not found.</h1>';
-          echo '<a href="/browsecourses" title="Return to browse">Return to browse courses</a>';
+          echo '<a href="../viewcourse/index.php" title="Return to browse">Return to browse courses</a>';
           echo '</div></body></html>';
           die();
       }

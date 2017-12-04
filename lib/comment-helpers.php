@@ -234,6 +234,7 @@
                         else {
                           $ret['content'] .= $comment['comment'];
                         }
+                        $ret['content'] .= '<form method="POST" action="/lib/form-submit-flag-comment.php"><input type="submit" class = "btn" name="flag" value="Flag Comment" /><input type="hidden" name="id" value="' . $comment['id'] . '" /><input type="hidden" name="cid" value="' . $comment['courseid'] . '" /></form>';
                         $ret['content'] .= '</div>';
                         $ret['content'] .= '</div><hr>';
                     }
@@ -246,6 +247,40 @@
         } else {
             $ret = courseNotFound();
         }
+        
+        return $ret;
+    }
+    function flagComment($commentid){
+        global $db;
+        $statement = $db->prepare("UPDATE `comments` SET `flagged`= 1 WHERE `id`=:id;");
+        $statement->execute(array(':id'=>$commentid));
+    }
+    function unflagComment($commentid){
+        global $db;
+        $statement = $db->prepare("UPDATE `comments` SET `flagged`= 0 WHERE `id`=:id;");
+        $statement->execute(array(':id'=>$commentid));
+    }
+    function deleteComment($commentid){
+        global $db;
+        $statement = $db->prepare("DELETE From `comments` WHERE `id`=:id;");
+        $statement->execute(array(':id'=>$commentid));
+    }
+
+    function getflaggedComments(){
+        global $db;
+        $statement = $db->prepare("SELECT * from `comments`WHERE `flagged`=1;");
+        $statement->execute();
+        $ret = '<table> <tr><th><h3> Flagged Comment </h3></th> <th> <h3>Username </h3></th><th><h3>Actions </h3></th></tr>';
+        
+        while ($flagged = $statement->fetch()) {
+            $ret .= '<tr><td>' . $flagged['comment'] . '</td>';
+            $ret .= '<td>' . $flagged['userid'] . '</td>';
+            $ret .= '<td><form action="/lib/form-submit-comment-actions.php" method="POST"> <input id = "Reg" type="radio" name="flagged"  value="Delete Comment"> Delete Comment<br> <input id = "Mod"type="radio" name="flagged"  value="Unflag Comment"> Unflag Comment<input type="hidden" name="id" value="' . $flagged['id'] . '" /> <br> <input class = "btn"type="submit" value="Submit"> </form> <br> </form> </td></tr>';
+
+        } 
+        $ret .= '</table>';
+        
+        $ret .= '</div>';
         
         return $ret;
     }

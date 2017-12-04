@@ -306,7 +306,7 @@
                 $ret .= '<td>0</td>';
             }
             
-            $ret .= '<td><form method="POST" action="/lib/form-submit-school-delete.php"><input type="submit" name="delete" value="Delete School" /><input type="hidden" name="id" value="' . $school['id'] . '" /></form>';
+            $ret .= '<td><form method="POST" action="/lib/form-submit-school-delete.php"><input class="btn" type="submit" name="delete" value="Delete School" /><input type="hidden" name="id" value="' . $school['id'] . '" /></form>';
         }
         
         $ret .= '</table>';
@@ -331,12 +331,13 @@
             $statement = $db->prepare("SELECT * FROM `courses` WHERE `schoolid` = :schoolid ORDER BY `major`, `coursenum`");
             $statement->execute(array(':schoolid' => $school));
             
-            $ret .= '<table><th>Course</th><th>Major Code</th><th>Course Number</th>';
+            $ret .= '<table><th>Course</th><th>Major Code</th><th>Course Number</th><th>Delete Course</th>';
             
             while ($course = $statement->fetch()) {
                 $ret .= '<tr><td>' . $course['coursename'] . '</td>';
                 $ret .= '<td>' . $course['major'] . '</td>';
                 $ret .= '<td>' . $course['coursenum'] . '</td></tr>';
+                $ret .= '<td><form method="POST" action="/lib/form-submit-course-delete.php"><input class="btn" type="submit" name="delete" value="Delete Course" /><input type="hidden" name="id" value="' . $course['coursenum'] . '" /></form> </td> </tr>';
             }
             
             $ret .= '</table>';
@@ -422,12 +423,13 @@
             $statement = $db->prepare("SELECT * FROM `majors` WHERE `schoolid` = :schoolid ORDER BY `school`, `major`");
             $statement->execute(array(':schoolid' => $school));
             
-            $ret .= '<table><th>Major</th><th>Major Code</th><th>School</th>';
+            $ret .= '<table><th>Major</th><th>Major Code</th><th>School</th> <th> Delete </th>';
             
             while ($major = $statement->fetch()) {
                 $ret .= '<tr><td>' . $major['name'] . '</td>';
                 $ret .= '<td>' . $major['major'] . '</td>';
                 $ret .= '<td>' . $major['school'] . '</td></tr>';
+                $ret .= '<td><form method="POST" action="/lib/form-submit-major-delete.php"><input class="btn" type="submit" name="delete" value="Delete Major" /><input type="hidden" name="id" value="' . $major['id'] . '" /></form> </td> </tr>';
             }
             
             $ret .= '</table>';
@@ -436,6 +438,31 @@
         $ret .= '</div>';
         
         return $ret;
+    }
+    //Deletes a major
+    function deleteMajor($majorid) {
+        global $db;
+        echo '<script>alert("' . $majorid . '");</script>';
+        //get major
+        $statement = $db->prepare("SELECT * FROM `majors` WHERE `id` = :id");
+        $statement->execute(array(':id' => $majorid));
+        if (($major = $statement->fetch()) === false){
+            die();
+        }
+
+        //get courses by major and school
+        $statementGetCourses = $db->prepare("SELECT * FROM `courses` WHERE `major` = :major and `schoolid` = :schoolid");
+        $statementGetCourses->execute(array(':major' => $major['major'], ':schoolid' => $major['schoolid']));
+
+        $courseids = array();
+        
+        $courseids = $statementGetCourses->fetchall();
+        //Delete each course in the array
+        for ($i=0; $i<count($courseids);$i++){
+            echo deleteCourse($courseids[$i]['id']);
+        }
+        $delMajor = $db->prepare("DELETE FROM `majors` WHERE `id` = :id");
+        $delMajor->execute(array(':id' => $majorid));
     }
 
 ?>

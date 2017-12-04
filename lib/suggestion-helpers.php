@@ -25,6 +25,30 @@
             return false;
         }
     }
+    /* Returns all active suggestions */
+    function getactiveSuggestions() {
+         global $db;
+        
+        $ret = '<div id="suggestions">';
+        
+        $statement = $db->prepare("SELECT * FROM `suggestions` Where `status` = 0;");
+        $statement->execute();
+        
+        $ret .= '<table> <tr><th><h3> Active Suggestions </h3></th> <th> <h3>Completed Suggestion? </h3></th></tr>';
+        
+        
+        while ($suggestion = $statement->fetch()) {
+            $ret .= '<tr><td>' . $suggestion['suggestion'] . '</td>';
+            $ret .= '<td><form action="/lib/form-submit-edit-suggestions.php" method="POST"> <input class="btn" type="submit" name="Inactive"><br><input type="hidden" name="id" value ="'.$suggestion['id'].'" ><br> </form> </td></tr>';
+
+        } 
+        $ret .= '</table>';
+        
+        $ret .= '</div>';
+        
+        return $ret;
+    }
+    
     
     /**
      * Creates a new suggestion. Returns the ID of the suggestion if it was created, false otherwise
@@ -47,4 +71,10 @@
         } else {
             return false;
         }
+    }
+
+    function setcompletedSuggestion($suggestionid){
+        global $db;
+        $statement = $db->prepare("UPDATE `suggestions` SET `status`= 1 WHERE `id`=:id;");
+        $statement->execute(array(':id'=>$suggestionid));
     }

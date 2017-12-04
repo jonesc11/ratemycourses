@@ -56,6 +56,7 @@
     $query .= 'active tinyint DEFAULT 1,';
     $query .= 'ratingid varchar(8) NOT NULL,';
     $query .= 'userid varchar(8) NOT NULL,';
+    $query .= 'flagged tinyint DEFAULT 0,';
     $query .= 'PRIMARY KEY(id)';
     $query .= ')';
     $query .= 'DEFAULT CHARSET=utf8 Collate utf8_unicode_ci;';

@@ -89,6 +89,72 @@
 		return isset($_SESSION["user"]) && isValid($_SESSION["user"]["email"], $_SESSION["user"]["password"]);
 	}
 
+    function isAdmin(){ //determines whether user is an admin
+        return $_SESSION['user']['permissions'] ==2;
+    }
+
+    function isMod(){ //determines whether user is a moderator
+        return $_SESSION['user']['permissions'] ==1;
+    }
+
+    //Edit User Permissions
+    function editUserperms($userid, $perm){
+        global $db;
+        if ($perm === 'Admin'){
+            $statement = $db->prepare("UPDATE `users` SET `permissions`= 2 WHERE `id`=:id;");
+            $statement->execute(array(':id'=>$userid));
+        }
+        elseif ($perm === 'Mod'){
+            $statement = $db->prepare("UPDATE `users` SET `permissions` = 1 WHERE `id`=:id;");
+            $statement->execute(array(':id'=>$userid));
+        }
+        elseif ($perm === 'Reg'){
+            $statement = $db->prepare("UPDATE `users` SET `permissions` = 0 WHERE `id`=:id;");
+            $statement->execute(array(':id'=>$userid));
+        }
+
+    }
+    // GET USERS
+    function getUsers(){
+        global $db;
+        
+        $ret = '<div id="users">';
+        
+        $statement = $db->prepare("SELECT * FROM `users`;");
+        $statement->execute();
+        
+        $ret .= '<h1> User Table </h1>';
+        
+        $ret .= '<table><th>Username</th><th>Email</th><th>Permissions</th><th>Update Permissions</th><th>Delete</th>';
+        
+        while ($user = $statement->fetch()) {
+            $ret .= '<tr><td>' . $user['username'] . '</td>';
+            $ret .= '<td>' . $user['email'] . '</td>';
+            if ($user['permissions'] ==2){
+                $ret .= '<td> Admin </td>';
+            }
+            else if ($user['permissions'] ==1){
+                $ret .= '<td> Mod </td>';
+            }
+            else{
+                $ret .= '<td> Regular User </td>';
+            }
+            $ret.= '<td><form action="/lib/form-submit-editperm-user.php" method="POST"> <input id = "Reg" type="radio" name="permissions"  value="Reg"> Normal User<br> <input id = "Mod"type="radio" name="permissions"  value="Mod"> Moderator<br><input type="radio" name="permissions"  value="Admin"> Admin<br><input type="hidden" name="id" value="' . $user['id'] . '" /><input class = "btn"type="submit" value="Submit"> </form></td>';
+            $ret .= '<td><form method="POST" action="/lib/form-submit-User-delete.php"><input type="submit" class = "btn" name="delete" value="Delete User" /><input type="hidden" name="id" value="' . $user['id'] . '" /></form> </td> </tr>';
+            
+        }
+        $ret .= '</table>';
+        
+        $ret .= '</div>';
+        
+        return $ret;
+    }
+    //DELETE USERS
+    function deleteUsers($userid){
+        global $db;
+        $statement = $db->prepare("DELETE FROM `users` WHERE `id` = :id");
+        $statement->execute(array(':id' => $userid));
+    }
 
 	//Determines whether or not uname and password combination is correct
 	//pulls database values and checks against hashed password

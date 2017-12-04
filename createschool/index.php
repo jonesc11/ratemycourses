@@ -3,9 +3,9 @@
     require_once(__DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'lib' . DIRECTORY_SEPARATOR . 'db-connect.php');
     require_once(__DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'lib' . DIRECTORY_SEPARATOR . 'course-helpers.php');
     
-    /*if (!isset($_SESSION['user']['permissions']) || $_SESSION['user']['permissions'] < 1) {
-        header ('Location: /accesserror');
-    }*/
+    if (!isset($_SESSION['user']['permissions']) || $_SESSION['user']['permissions'] < 1) {
+        header ('Location: /');
+    }
     
 ?>
 <!DOCTYPE html>

@@ -15,6 +15,10 @@
             <?php
               if (isset($_SESSION['user'])) {
                 echo '<a class="nav-item nav-link" href="/lib/logout.php">Logout</a>';
+
+                if (isset($_SESSION['user']['permissions']) && $_SESSION['user']['permissions'] >=1){
+                  echo '<a class="nav-item nav-link" href="/admin-panel.php"> Admin Panel </a>';
+                }
               } else {
                 echo '<a class="nav-item nav-link" data-toggle="modal" data-target="#login">Login</a>';
                 echo '<a class="nav-item nav-link" data-toggle="modal" data-target="#signup">Sign up</a>';
