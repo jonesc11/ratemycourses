@@ -16,7 +16,7 @@
     else
         $param['userid'] = 'FFFFFFFF';
     
-    $param['suggestion'] = $_POST['suggestion'];
+    $param['suggestion'] = strip_tags($_POST['suggestion']);
     
     $result = createSuggestion($param);
     

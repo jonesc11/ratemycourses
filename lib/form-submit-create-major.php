@@ -20,22 +20,22 @@
     
     
     if (isset($_POST['school']) && $_POST['school'] != -1)
-        $schoolid = $_POST['school'];
+        $schoolid = strip_tags($_POST['school']);
     else
         header ('Location: /createmajor?e=u');
     
     if (isset($_POST['majorname']) && $_POST['majorname'] != '')
-        $majorname = $_POST['majorname'];
+        $majorname = strip_tags($_POST['majorname']);
     else
         header ('Location: /createmajor?e=n');
     
     if (isset($_POST['major']) && $_POST['major'] != '')
-        $major = $_POST['major'];
+        $major = strip_tags($_POST['major']);
     else
         header ('Location: /createmajor?e=m');
     
     if (isset($_POST['schoolname']) && $_POST['schoolname'])
-        $schoolname = $_POST['schoolname'];
+        $schoolname = strip_tags($_POST['schoolname']);
     else
         header ('Location: /createmajor?e=s');
     

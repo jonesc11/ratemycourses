@@ -11,11 +11,11 @@
      * NOT IMPLEMENTED: Function to generate the form and any errors associated with it.
      *                  Errors will use Bootstrap alerts.
      */
-    $fname     = trim($_POST['firstname']);
-    $lname     = trim($_POST['lastname']);
-    $uname     = trim($_POST['username']);
-    $email     = trim($_POST['email']);
-    $confEmail = trim($_POST['conf_email']);
+    $fname     = trim(strip_tags($_POST['firstname']));
+    $lname     = trim(strip_tags($_POST['lastname']));
+    $uname     = trim(strip_tags($_POST['username']));
+    $email     = trim(strip_tags($_POST['email']));
+    $confEmail = trim(strip_tags($_POST['conf_email']));
     $password  = $_POST['password'];
     $confPass  = $_POST['conf_password'];
     
