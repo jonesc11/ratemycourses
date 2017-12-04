@@ -337,7 +337,7 @@
                 $ret .= '<tr><td>' . $course['coursename'] . '</td>';
                 $ret .= '<td>' . $course['major'] . '</td>';
                 $ret .= '<td>' . $course['coursenum'] . '</td></tr>';
-                $ret .= '<td><form method="POST" action="/lib/form-submit-course-delete.php"><input class="btn" type="submit" name="delete" value="Delete Course" /><input type="hidden" name="id" value="' . $course['coursenum'] . '" /></form> </td> </tr>';
+                $ret .= '<td><form method="POST" action="/lib/form-submit-course-delete.php"><input class="btn" type="submit" name="delete" value="Delete Course" /><input type="hidden" name="id" value="' . $course['id'] . '" /></form> </td> </tr>';
             }
             
             $ret .= '</table>';

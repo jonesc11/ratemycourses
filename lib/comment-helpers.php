@@ -84,8 +84,8 @@
         
         $newId = genNewRatingId();
         
-        $query = "INSERT INTO `ratings` (`id`, `category1`, `category2`, `category3`, `category4`, `category5`) VALUES (:id, :c1, :c2, :c3, :c4, :c5);";
-        $param = array (':id' => $newId, ':c1' => $array['rating1'], ':c2' => $array['rating2'], ':c3' => $array['rating3'], ':c4' => $array['rating4'], ':c5' => $array['rating5']);
+        $query = "INSERT INTO `ratings` (`id`, `category1`, `category2`, `category3`, `category4`, `category5`, `userid`) VALUES (:id, :c1, :c2, :c3, :c4, :c5, :userid);";
+        $param = array (':id' => $newId, ':c1' => $array['rating1'], ':c2' => $array['rating2'], ':c3' => $array['rating3'], ':c4' => $array['rating4'], ':c5' => $array['rating5'], ':userid' => $array['userid']);
         
         $statement = $db->prepare($query);
         $result = $statement->execute($param);

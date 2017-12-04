@@ -41,14 +41,6 @@
         die ($errorMessage . "courses");
     }
     
-    try {
-        $statement = $db->prepare($query);
-        if ($statement->execute() === FALSE)
-            die ($errorMessage . "votes");
-    } catch (Exception $e) {
-        die ($errorMessage . "votes");
-    }
-    
     $query  = 'CREATE TABLE IF NOT EXISTS comments (';
     $query .= 'id varchar(8) NOT NULL,';
     $query .= 'courseid varchar(8) NOT NULL,';
@@ -76,6 +68,7 @@
     $query .= 'category3 int DEFAULT NULL,';
     $query .= 'category4 int DEFAULT NULL,';
     $query .= 'category5 int DEFAULT NULL,';
+    $query .= 'userid varchar(8) NOT NULL,';
     $query .= 'PRIMARY KEY(id)';
     $query .= ');';
     

@@ -32,7 +32,7 @@
     if (isset($_POST['rating5']))
         $rating5 = strip_tags($_POST['rating5']);
     
-    $ratingParam = array('rating1' => $rating1, 'rating2' => $rating2, 'rating3' => $rating3, 'rating4' => $rating4, 'rating5' => $rating5);
+    $ratingParam = array('rating1' => $rating1, 'rating2' => $rating2, 'rating3' => $rating3, 'rating4' => $rating4, 'rating5' => $rating5, 'userid' => $userid);
     $ratingId = createRating($ratingParam);
     
     $commentParam = array('ratingid' => $ratingId, 'comment' => $comment, 'courseid' => $courseid, 'userid' => $userid);
