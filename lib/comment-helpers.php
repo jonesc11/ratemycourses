@@ -276,10 +276,10 @@
         $ret = '<table> <tr><th><h3> Flagged Comment </h3></th> <th> <h3>Username </h3></th><th><h3>Actions </h3></th></tr>';
         
         while ($flagged = $statement->fetch()) {
-            $statement = $db->prepare("SELECT * FROM `users` WHERE `id` = :id");
-            $statement->execute(array(':id' => $flagged['userid']));
+            $statementUser = $db->prepare("SELECT * FROM `users` WHERE `id` = :id");
+            $statementUser->execute(array(':id' => $flagged['userid']));
             
-            $user = $statement->fetch();
+            $user = $statementUser->fetch();
             
             $ret .= '<tr><td>' . $flagged['comment'] . '</td>';
             $ret .= '<td>' . $user['username'] . '</td>';
