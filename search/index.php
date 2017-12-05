@@ -36,10 +36,6 @@
                 $majorsResults[] = $row;
             if (strpos(strtoupper($row['mname']), strtoupper($q)) !== FALSE)
                 $majorsResults[] = $row;
-            if (strpos(strtoupper($row['sname']), strtoupper($q)) !== FALSE)
-                $majorsResults[] = $row;
-            if (strpos(strtoupper($row['schoolid']), strtoupper($q)) !== FALSE)
-                $majorsResults[] = $row;
         }
     }
     
@@ -48,15 +44,11 @@
     
     while ($row = $statement->fetch()) {
         foreach ($queryarr as $q) {
-            if (strpos(strtoupper($row['id']), strtoupper($q)) !== FALSE)
-                $courseResults[] = $row;
             if (strpos(strtoupper($row['coursename']), strtoupper($q)) !== FALSE)
                 $courseResults[] = $row;
             if (strpos(strtoupper($row['coursenum']), strtoupper($q)) !== FALSE)
                 $courseResults[] = $row;
             if (strpos(strtoupper($row['major']), strtoupper($q)) !== FALSE)
-                $courseResults[] = $row;
-            if (strpos(strtoupper($row['name']), strtoupper($q)) !== FALSE)
                 $courseResults[] = $row;
         }
     }
