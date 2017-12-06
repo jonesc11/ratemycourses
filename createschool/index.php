@@ -3,6 +3,7 @@
     require_once(__DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'lib' . DIRECTORY_SEPARATOR . 'db-connect.php');
     require_once(__DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'lib' . DIRECTORY_SEPARATOR . 'course-helpers.php');
     
+    //- If the user isn't logged in or the user's permissions is not sufficient, go back to the homepage (deny access)
     if (!isset($_SESSION['user']['permissions']) || $_SESSION['user']['permissions'] < 1) {
         header ('Location: /');
     }
@@ -22,7 +23,7 @@
     <link rel="stylesheet" href="../resources/submit-forms.css">
   </head>
   <body>
-    <?php require(__DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'resources' . DIRECTORY_SEPARATOR . 'navbar.php'); ?>
+    <?php require_once(__DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'resources' . DIRECTORY_SEPARATOR . 'navbar.php'); ?>
     <div class="container">
       <div class="output-container">
         <h2>Create a School</h2>

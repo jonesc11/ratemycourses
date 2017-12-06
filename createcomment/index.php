@@ -3,9 +3,11 @@
     require_once(__DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'lib' . DIRECTORY_SEPARATOR . 'db-connect.php');
     require_once(__DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'lib' . DIRECTORY_SEPARATOR . 'comment-helpers.php');
     
+    //- If the user isn't logged in, redirect to the homepage
     if (!isset($_SESSION['user']))
       header ("Location: /");
     
+    //- Get the course data and display it or display that the course is not found
     if (isset($_GET['c'])) {
         $coursename = getCourseName($_GET['c']);
     } else {
@@ -34,7 +36,9 @@
   </head>
   <body>
     <?php
-      require(__DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'resources' . DIRECTORY_SEPARATOR . 'navbar.php');
+      require_once(__DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'resources' . DIRECTORY_SEPARATOR . 'navbar.php');
+      
+      //- If the course wasn't found, display that and ask to return to courses.
       if ($coursename === null) {
           echo '<div id="content">';
           echo '<h1>Course not found.</h1>';

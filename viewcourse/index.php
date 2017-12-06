@@ -4,11 +4,13 @@
     require_once(__DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'lib' . DIRECTORY_SEPARATOR . 'comment-helpers.php');
     
     //- In the get request, c is the course ID, and s is the starting point (only show 25 comments per page, so we can start at other offsets).
-    
     if (isset($_GET['c'])) {
+        //- s is for paginating
         if (isset($_GET['s'])) {
+            //- Starts from a the offset specified
             $output = getCourseContent($_GET['c'], $_GET['s']);
         } else {
+            //- Starts from the first page (no paginating)
             $output = getCourseContent($_GET['c'], 0);
         }
     } else {
@@ -30,8 +32,8 @@
     <link rel="stylesheet" href="/resources/viewcourse.css">
   </head>
   <body>
-    <?php 
-      require(__DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'resources' . DIRECTORY_SEPARATOR . 'navbar.php');
+    <?php
+      require_once(__DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'resources' . DIRECTORY_SEPARATOR . 'navbar.php');
     ?>
     <div class="container">
       <div class="output-container">

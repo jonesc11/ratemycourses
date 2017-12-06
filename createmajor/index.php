@@ -3,6 +3,7 @@
     require_once(__DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'lib' . DIRECTORY_SEPARATOR . 'db-connect.php');
     require_once(__DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'lib' . DIRECTORY_SEPARATOR . 'course-helpers.php');
     
+    //- If the user is not logged in or the user does not have sufficient permissions, return the the homepage (deny permission)
     if (!isset($_SESSION['user']['permissions']) || $_SESSION['user']['permissions'] < 1) {
         header ("Location: /");
     }
@@ -23,7 +24,8 @@
   </head>
   <body>
     <?php
-      require(__DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'resources' . DIRECTORY_SEPARATOR . 'navbar.php');
+      require_once(__DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'resources' . DIRECTORY_SEPARATOR . 'navbar.php');
+      //- This switch statement parses any errors that may come up when creating the school.
       if (isset($_GET['e'])) {
           switch ($_GET['e']) {
               case 's':
@@ -92,6 +94,7 @@
           <input class="btn school-btn" type="submit" name="submit" value="Get Majors" />
         </form>
         <?php
+          //- Get the majors for a specified school
           if (isset($_GET['s'])) {
               echo getMajors(trim($_GET['s']));
           }

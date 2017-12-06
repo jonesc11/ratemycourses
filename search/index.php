@@ -4,15 +4,19 @@
     
     $query = '';
     
+    //- Get the search query
     if (isset($_GET['q']))
         $query = $_GET['q'];
     
+    //- Turn it into an array so we can look at the number of word matches
     $queryarr = explode('+', $query);
     
+    //- To be stored - All of the school data go to one array, majors to another, and courses to another.
     $schoolResults = array();
     $majorsResults = array();
     $courseResults = array();
     
+    //- Search through the schools table
     $statement = $db->prepare("SELECT * FROM `schools`;");
     $statement->execute();
     
@@ -25,6 +29,7 @@
         }
     }
     
+    //- Search through the majors table
     $statement = $db->prepare("SELECT major, school, majors.name AS mname, schools.name AS sname, schoolid FROM `majors`, `schools` WHERE majors.schoolid = schools.id;");
     $statement->execute();
     
@@ -39,6 +44,7 @@
         }
     }
     
+    //- Search through the courses table
     $statement = $db->prepare("SELECT courses.id, coursename, coursenum, major, name FROM `courses`, `schools` WHERE courses.schoolid = schools.id;");
     $statement->execute();
     
@@ -70,16 +76,19 @@
   <body>
     
     <?php
-      require(__DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'resources' . DIRECTORY_SEPARATOR . 'navbar.php');
+      require_once(__DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'resources' . DIRECTORY_SEPARATOR . 'navbar.php');
     ?>
     <div class="container">
       <div class="output-container">
         <h2>Search Results for "<?php echo $query; ?>"</h2>
         <div class="search-results">
           <?php
+            //- Display empty results
             if(empty($schoolResults) & empty($majorsResults) & empty($courseResults)) {
               echo '<h3>No results found</h3>';
             }
+            
+            //- Display school results if any exist
             if(!empty($schoolResults)) {
               echo '<h3>Schools:</h3>';
               $schools = '<ul>';
@@ -89,6 +98,8 @@
               $schools .= '</ul>';
               echo $schools;
             }
+            
+            //- Display majors results if any exist
             if(!empty($majorsResults)) {
               echo '<h3>Majors:</h3>';
               $majors = '<ul>';
@@ -98,6 +109,8 @@
               $majors .= '</ul>';
               echo $majors;
             }
+            
+            //- Display course results if any exist
             if(!empty($courseResults)) {
               echo '<h3>Courses:</h3>';
               $courses = '<ul>';

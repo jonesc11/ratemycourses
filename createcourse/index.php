@@ -3,6 +3,7 @@
     require_once(__DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'lib' . DIRECTORY_SEPARATOR . 'db-connect.php');
     require_once(__DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'lib' . DIRECTORY_SEPARATOR . 'course-helpers.php');
     
+    //- If the user is not logged in or the user has insufficient permissions, redirect to the homepage (deny access)
     if (!isset($_SESSION['user']['permissions']) || $_SESSION['user']['permissions'] < 1) {
         header ('Location: /');
     }
@@ -23,7 +24,9 @@
   </head>
   <body>
     <?php
-      require(__DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'resources' . DIRECTORY_SEPARATOR . 'navbar.php');
+      require_once(__DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'resources' . DIRECTORY_SEPARATOR . 'navbar.php');
+      
+      //- Parse any error messages
       if (isset($_GET['e'])) {
           switch ($_GET['e']) {
               case 's':
@@ -92,6 +95,7 @@
           <input class="btn school-btn" type="submit" name="submit" value="Get Courses" />
         </form>
         <?php
+          //- Get this list of courses for the specified school if specified
           if (isset($_GET['s'])) {
               echo listCourses(trim($_GET['s']));
           }

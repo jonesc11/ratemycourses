@@ -3,10 +3,6 @@
     require_once(__DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'lib' . DIRECTORY_SEPARATOR . 'db-connect.php');
     require_once(__DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'lib' . DIRECTORY_SEPARATOR . 'course-helpers.php');
     
-    /*if (!isset($_SESSION['user']['permissions']) || $_SESSION['user']['permissions'] < 1) {
-        header ('Location: /accesserror');
-    }*/
-    
 ?>
 <!DOCTYPE html>
 <html>
@@ -22,7 +18,9 @@
   </head>
   <body>
     <?php
-      require(__DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'resources' . DIRECTORY_SEPARATOR . 'navbar.php');
+      require_once(__DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'resources' . DIRECTORY_SEPARATOR . 'navbar.php');
+      
+      //- If s=t is set, then we successfully added the suggestion, so display the alert.
       if (isset($_GET['s']) && $_GET['s'] == 't')
           echo '<div class="alert alert-success">Suggestion successfully created.</div>';
     ?>
@@ -31,6 +29,7 @@
         <h2>Make a Suggestion</h2>
         <form class="form" action="/lib/form-submit-suggestions.php" method="POST">
         <?php
+            //- The database stores the user ID if it's available, although it's not required.
             if (isset($_SESSION['user']['id']))
                 echo '<input type="hidden" name="userid" value="' . $_SESSION['user']['id'] . '" />';
         ?>
