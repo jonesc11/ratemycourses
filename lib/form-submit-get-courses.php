@@ -16,7 +16,8 @@
      *   - m: major invalid
      *   - n: coursenum invalid
      */
-    
+     
+    //- Redirect to the page that will display the school name
     if (isset($_POST['submit']) && $_POST['submit'] == 'Get Courses') {
         if (isset($_POST['school']) && $_POST['school'] != -1) {
             header ('Location: /createcourse?s=' . trim($_POST['school']));

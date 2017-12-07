@@ -21,6 +21,7 @@
     $rating4  = null;
     $rating5  = null;
     
+    //- Get ratings if they're provided
     if (isset($_POST['rating1']))
         $rating1 = strip_tags($_POST['rating1']);
     if (isset($_POST['rating2']))
@@ -32,9 +33,11 @@
     if (isset($_POST['rating5']))
         $rating5 = strip_tags($_POST['rating5']);
     
+    //- Create the rating row
     $ratingParam = array('rating1' => $rating1, 'rating2' => $rating2, 'rating3' => $rating3, 'rating4' => $rating4, 'rating5' => $rating5, 'userid' => $userid);
     $ratingId = createRating($ratingParam);
     
+    //- Create the comment row
     $commentParam = array('ratingid' => $ratingId, 'comment' => $comment, 'courseid' => $courseid, 'userid' => $userid);
     $commentId = createComment($commentParam);
     

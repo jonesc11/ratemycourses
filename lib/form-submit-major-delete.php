@@ -8,11 +8,11 @@
      *   - id
      */
     
-    
-    if (isset($_POST['delete']) && $_POST['delete'] == 'Delete Major' && isset($_POST['id'])){
+    //- Delete the major and redirect
+    if (isset($_POST['delete']) && $_POST['delete'] == 'Delete Major' && isset($_POST['id']) && $_SESSION['user']['permissions'] >= 1){
         deleteMajor($_POST['id']);
     }
     
-    header ('Location: /createmajor');
+    header ('Location: /createmajor?s=' . $_POST['schoolid']);
 
 ?>

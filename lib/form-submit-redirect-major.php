@@ -17,6 +17,7 @@
      *   - n: coursenum invalid
      */
     
+    //- Redirect to the majors page with the correct school ID, otherwise just go to the majors page.
     if (isset($_POST['submit']) && $_POST['submit'] == 'Go') {
         if (isset($_POST['school']) && $_POST['school'] != -1) {
             $_SESSION['school'] = $_POST['school'];

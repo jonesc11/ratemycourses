@@ -8,9 +8,10 @@
      *   - schoolname
      */
     
-    $courseid = $_POST['schoolname'];
-    
-    $schoolParam = array('schoolname' => strip_tags($_POST['schoolname']));
-    createSchool($schoolParam);
+    //- Create school
+    if ($_SESSION['user']['permissions'] >= 1) {
+        $schoolParam = array('schoolname' => strip_tags($_POST['schoolname']));
+        createSchool($schoolParam);
+    }
     
     header ('Location: /createschool');

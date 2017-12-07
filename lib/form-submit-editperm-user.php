@@ -8,8 +8,8 @@
      *   - id
      */
     
-    
-    if (isset($_POST['permissions']) && isset($_POST['id']) && ($_POST['permissions'] == 'Admin' || $_POST['permissions'] == 'Mod' || $_POST['permissions'] == 'Reg')){
+    //- Set the user permission and return back to the admin panel
+    if (isset($_POST['permissions']) && isset($_POST['id']) && ($_POST['permissions'] == 'Admin' || $_POST['permissions'] == 'Mod' || $_POST['permissions'] == 'Reg') && $_SESSION['user']['permissions'] >= 2){
         editUserperms($_POST['id'],$_POST['permissions'] );
     }
     header ('Location: ../admin-panel.php');

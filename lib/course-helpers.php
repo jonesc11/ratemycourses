@@ -110,11 +110,13 @@
     function getSchools() {
         global $db;
         
+        //- Statement select queries
         $statementSchools = $db->prepare("SELECT * FROM `schools` ORDER BY `name`");
         $statementSchools->execute();
         
         $ret = '<table id="schools"><th>School</th><th>Number of Courses</th>';
         
+        //- Loops throught all the table rows
         while ($school = $statementSchools->fetch()) {
             $statementCount = $db->prepare('SELECT COUNT(id) AS count FROM `courses` WHERE `schoolid` = :sid');
             $statementCount->execute(array(':sid' => $school['id']));
@@ -140,7 +142,7 @@
     /**
      * Returns a select field with all of the schools.
      */
-    function getSchoolSelect() {
+    function getSchoolSelect($id = -1) {
         global $db;
         
         $statement = $db->prepare("SELECT * FROM `schools` ORDER BY `name`");
@@ -150,7 +152,12 @@
         $ret .= '<option value="-1" selected>-- SELECT A SCHOOL --</option>';
         
         while ($school = $statement->fetch()) {
-            $ret .= '<option value="' . $school['id'] . '">' . ucwords(strtolower($school['name'])) . '</option>';
+            $ret .= '<option value="' . $school['id'] . '"';
+            
+            if ($school['id'] == $id)
+                $ret .= ' selected';
+            
+            $ret .= '>' . ucwords(strtolower($school['name'])) . '</option>';
         }
         
         $ret .= '</select>';
@@ -429,7 +436,7 @@
                 $ret .= '<tr><td>' . $major['name'] . '</td>';
                 $ret .= '<td>' . $major['major'] . '</td>';
                 $ret .= '<td>' . $major['school'] . '</td>';
-                $ret .= '<td><form method="POST" action="/lib/form-submit-major-delete.php"><input class="btn" type="submit" name="delete" value="Delete Major" /><input type="hidden" name="id" value="' . $major['id'] . '" /></form> </td> </tr>';
+                $ret .= '<td><form method="POST" action="/lib/form-submit-major-delete.php"><input type="hidden" name="schoolid" value="' . $school . '" /><input class="btn" type="submit" name="delete" value="Delete Major" /><input type="hidden" name="id" value="' . $major['id'] . '" /></form> </td> </tr>';
             }
             
             $ret .= '</table>';

@@ -125,8 +125,10 @@
         
         $ret .= '<h1> User Table </h1>';
         
+        //- Table header
         $ret .= '<table><th>Username</th><th>Email</th><th>Permissions</th><th>Update Permissions</th><th>Delete</th>';
         
+        //- Display all user rows
         while ($user = $statement->fetch()) {
             $ret .= '<tr><td>' . $user['username'] . '</td>';
             $ret .= '<td>' . $user['email'] . '</td>';
@@ -164,14 +166,17 @@
         
 		$isEmail = false;
 		
+        //- Usernames can't have @ symbols, so if it does than it's an email
 		if(strpos($id,'@') !== false){
 			$isEmail = true;
 		}
 		
+        //- Query for users
 		$query = "SELECT * FROM `users`;";
         $statement = $db->prepare($query);
         $result = $statement->execute();
         
+        //- Validate the user by email or username
         while ($row = $statement->fetch()) {
             if ($isEmail == true){
 				if(strtolower($id) == strtolower($row["email"])){
@@ -217,20 +222,22 @@
         return $ret;
     }
 
-	//Logs in the user if uname or password is correct
-
+	// Logs in the user if uname or password is correct
 	function login($id, $password){
         global $db;
 		$isEmail = false;
 		
+        //- Check for the emails
 		if(strpos($id,'@') !== false){
 			$isEmail = true;
 		}
 		
+        //- User table query
 		$query = "SELECT * FROM `users`;";
         $statement = $db->prepare($query);
         $result = $statement->execute();
         
+        //- Get the salt from the database
         while ($row = $statement->fetch()) {
             if ($isEmail == true){
 				if(strtolower($id) == strtolower($row["email"])){
@@ -245,14 +252,16 @@
 				}
 			}
         }
+        
+        //- If it couldn't find the user, it's not in the database, return false
 		if (!isset($salt)){
 			return false;
 		}
 		
-		
-		
+        //- Get the hashed password
 		$password = genHashedPassword($password,$salt);
-			
+        
+        //- If there's a match in a database, set session variables & return true
 		if(isValid($id,$password) == true){
 			$_SESSION["user"]["id"] = $row["id"];
 			$_SESSION["user"]["firstname"] = $row["firstname"];
@@ -262,6 +271,7 @@
 			$_SESSION["user"]["permissions"] = $row["permissions"];
 			return true;
 		}
+        
 		return false;
 	}
 	

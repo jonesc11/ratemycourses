@@ -4,16 +4,8 @@
     
     /*
      * Returns a div for each school with a ul of all the majors in that school.
-     * The majors are anchor tags that link to BASE/major?q=*CODE*
+     * The majors are anchor tags that link to
      * Each div has an ID "display-*code*"
-     * 
-     * Viable codes:
-     *  - BUS (School of Business Management
-     *  - SCI (School of Science)
-     *  - HASS (School of Humanities, Arts, and Social Sciences)
-     *  - ENG (School of Engineering)
-     *  - ARCH (School of Architecture)
-     *  - OTH (Other)
      */
     function getMajorNav($school) {
         $ret = '';
@@ -60,7 +52,7 @@
         return $ret;
     }
     
-    /* 
+    /**
      * Returns a bunch of divs with class 'course' in a div with id 'courses-$majorCode'.
      * Class names are in a span of class 'course-name', and class identifiers are in a
      * span with class 'course-identifier'. Gets all the courses under the major code

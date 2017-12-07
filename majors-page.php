@@ -15,7 +15,9 @@
   </head>
   <body>
     <?php 
-      include(__DIR__ . DIRECTORY_SEPARATOR . 'resources' . DIRECTORY_SEPARATOR . 'navbar.php');
+      require_once(__DIR__ . DIRECTORY_SEPARATOR . 'resources' . DIRECTORY_SEPARATOR . 'navbar.php');
+      
+      //- Display error messages
       if (isset($_GET['e'])) {
             switch ($_GET['e']) {
                 case 's':

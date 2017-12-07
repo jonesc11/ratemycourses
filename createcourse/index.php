@@ -54,7 +54,12 @@
                 <label>University Name: </label>
               </td>
               <td>
-                <?php echo getSchoolSelect(); ?>
+                <?php
+                    if (isset($_GET['s']))
+                        echo getSchoolSelect($_GET['s']);
+                    else
+                        echo getSchoolSelect();
+                    ?>
               </td>
             </tr>
             <tr>
@@ -91,7 +96,12 @@
         <h2>View Existing Courses</h2>
         <form class="form" action="/lib/form-submit-get-courses.php" method="POST">
           <label class="school-label">University: </label>
-          <?php echo getSchoolSelect(); ?>
+          <?php
+            if (isset($_GET['s']))
+                echo getSchoolSelect($_GET['s']);
+            else
+                echo getSchoolSelect();
+          ?>
           <input class="btn school-btn" type="submit" name="submit" value="Get Courses" />
         </form>
         <?php

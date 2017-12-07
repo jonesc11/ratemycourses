@@ -19,6 +19,7 @@
     
     $errorMessage  = "Error connecting to database. Please contact <a href=\"mailto:jonesc11@rpi.edu\">jonesc11@rpi.edu</a>\n";
     
+    //- Check creating the databases
     try {
         $sql = "CREATE DATABASE IF NOT EXISTS ratemycourses";
 
@@ -36,5 +37,6 @@
     
     //- Loads session variables. Due to this, make sure this script is included on every page.
     session_start();
+    
+    //- Run create tables to create the tables if they don't already exist
     require('create-tables.php');
-

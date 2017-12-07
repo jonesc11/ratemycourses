@@ -59,8 +59,10 @@
         if (!is_array($array))
             throw new Exception('comment-helpers.php/createComment -> Parameter must be an array.');
         
+        //- Get comment ID
         $newId = genNewCommentId();
         
+        //- Insert query
         $query = "INSERT INTO `comments` (`id`, `courseid`, `comment`, `ratingid`, `userid`) VALUES (:id, :courseid, :comment, :ratingid, :userid);";
         $param = array (':id' => $newId, ':courseid' => $array['courseid'], ':comment' => $array['comment'], ':ratingid' => $array['ratingid'], ':userid' => $array['userid']);
         
@@ -82,14 +84,17 @@
         if (!is_array($array))
             throw new Exception('comment-helpers.php/createRating -> Parameter must be an array.');
         
+        //- Get the next rating ID
         $newId = genNewRatingId();
         
+        //- Insert query
         $query = "INSERT INTO `ratings` (`id`, `category1`, `category2`, `category3`, `category4`, `category5`, `userid`) VALUES (:id, :c1, :c2, :c3, :c4, :c5, :userid);";
         $param = array (':id' => $newId, ':c1' => $array['rating1'], ':c2' => $array['rating2'], ':c3' => $array['rating3'], ':c4' => $array['rating4'], ':c5' => $array['rating5'], ':userid' => $array['userid']);
         
         $statement = $db->prepare($query);
         $result = $statement->execute($param);
         
+        //- Return the new ID
         if ($result !== FALSE)
             return $newId;
         else
@@ -140,6 +145,7 @@
         $statement = $db->prepare($query);
         $statement->execute(array(':id' => $courseid));
         
+        //- If the course exists, do this, otherwise display not found
         if (($course = $statement->fetch()) !== FALSE) {
             $statement = $db->prepare("SELECT * FROM `comments` WHERE `courseid` = :courseid");
             $statement->execute(array(':courseid' => $courseid));
@@ -275,6 +281,7 @@
         $statement->execute();
         $ret = '<table> <tr><th><h3> Flagged Comment </h3></th> <th> <h3>Username </h3></th><th><h3>Actions </h3></th></tr>';
         
+        //- Loop  through flagged comments
         while ($flagged = $statement->fetch()) {
             $statementUser = $db->prepare("SELECT * FROM `users` WHERE `id` = :id");
             $statementUser->execute(array(':id' => $flagged['userid']));

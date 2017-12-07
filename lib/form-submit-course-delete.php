@@ -9,7 +9,7 @@
      */
     
     
-    if (isset($_POST['delete']) && $_POST['delete'] == 'Delete Course' && isset($_POST['id']))
+    if (isset($_POST['delete']) && $_POST['delete'] == 'Delete Course' && isset($_POST['id']) && $_SESSION['user']['permissions'] >= 1)
         deleteCourse($_POST['id']);
     
     header ('Location: /createcourse');

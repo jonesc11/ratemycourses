@@ -8,7 +8,7 @@
      *   - id
      */
     
-    
+    //- Set comment to flagged, unflagged, or deleted the comment and redirect
     if (isset($_POST['flagged']) && isset($_POST['id'])){
         if ($_POST['flagged']== 'Unflag Comment'){
         unflagComment($_POST['id']);

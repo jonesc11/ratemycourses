@@ -17,6 +17,7 @@
      *   - n: coursenum invalid
      */
     
+    //- Redirect to the createmajors page with the proper school showing
     if (isset($_POST['submit']) && $_POST['submit'] == 'Get Majors') {
         if (isset($_POST['school']) && $_POST['school'] != -1) {
             header ('Location: /createmajor?s=' . trim($_POST['school']));

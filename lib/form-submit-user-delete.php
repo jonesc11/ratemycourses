@@ -8,8 +8,8 @@
      *   - id
      */
     
-    
-    if (isset($_POST['delete']) && $_POST['delete'] == 'Delete User' && isset($_POST['id']))
+    //- Call the deleteUser function and redirect back to the admin panel
+    if (isset($_POST['delete']) && $_POST['delete'] == 'Delete User' && isset($_POST['id']) && $_SESSION['user']['permissions'] >= 1)
         deleteUsers($_POST['id']);
     
     header ('Location: ../admin-panel.php');

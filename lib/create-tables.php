@@ -3,6 +3,7 @@
     
     $errorMessage = "Error creating table: ";
     
+    //- Create users table
     $query  = 'CREATE TABLE IF NOT EXISTS users (';
     $query .= 'id varchar(8) NOT NULL,';
     $query .= 'username varchar(32) NOT NULL,';
@@ -24,6 +25,7 @@
         die ($errorMessage . "users");
     }
     
+    //- Create courses table
     $query  = 'CREATE TABLE IF NOT EXISTS courses (';
     $query .= 'id varchar(8) NOT NULL,';
     $query .= 'coursename varchar(54) NOT NULL,';
@@ -41,6 +43,7 @@
         die ($errorMessage . "courses");
     }
     
+    //- Create comments table
     $query  = 'CREATE TABLE IF NOT EXISTS comments (';
     $query .= 'id varchar(8) NOT NULL,';
     $query .= 'courseid varchar(8) NOT NULL,';
@@ -61,6 +64,7 @@
         die ($errorMessage . "comments");
     }
     
+    //- Create ratings table
     $query  = 'CREATE TABLE IF NOT EXISTS ratings (';
     $query .= 'id varchar(8) NOT NULL,';
     $query .= 'category1 int DEFAULT NULL,';
@@ -80,6 +84,7 @@
         die ($errorMessage . "ratings");
     }
     
+    //- Create suggestions table
     $query  = 'CREATE TABLE IF NOT EXISTS suggestions (';
     $query .= 'id varchar(8) NOT NULL,';
     $query .= 'userid varchar(8) DEFAULT \'FFFFFFFF\',';
@@ -96,6 +101,7 @@
         die ($errorMessage . "suggestions");
     }
     
+    //- Create majors table
     $query  = 'CREATE TABLE IF NOT EXISTS majors (';
     $query .= 'id varchar(8) NOT NULL,';
     $query .= 'major varchar(10) NOT NULL,';
@@ -113,6 +119,7 @@
         die ($errorMessage . "majors");
     }
     
+    //- Create schools table
     $query  = 'CREATE TABLE IF NOT EXISTS schools (';
     $query .= 'id varchar(8) NOT NULL,';
     $query .= 'name varchar(50) NOT NULL,';

@@ -8,9 +8,10 @@
      *   - id
      */
     
-    
-    if (isset($_POST['Inactive']) && isset($_POST['id'])){
+    //- Set the suggestion to inactive so that it doesn't show up
+    if (isset($_POST['Inactive']) && isset($_POST['id']) && $_SESSION['user']['permissions'] >= 1){
         setcompletedSuggestion($_POST['id']);
     }
+    
     header ('Location: ../admin-panel.php');
 ?>

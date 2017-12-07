@@ -11,13 +11,16 @@
     
     $param = array();
     
+    //- Set user ID parameters if there is a userid, if there's not, just set it to FFFFFFFF to indicate a generic user
     if (isset($_POST['userid']) && $_POST['userid'] != '')
         $param['userid'] = $_POST['userid'];
     else
         $param['userid'] = 'FFFFFFFF';
     
+    //- Cleanse the input for HTML
     $param['suggestion'] = strip_tags($_POST['suggestion']);
     
+    //- Create the suggestion and redirect
     $result = createSuggestion($param);
     
     header ("Location: /suggest?s=t");

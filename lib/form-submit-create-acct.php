@@ -7,10 +7,9 @@
      * The idea with this is to use AJAX to handle the form. This script will correctly
      * redirect if the form is successful, otherwise the form will empty the form of any
      * invalid information and passwords and refresh itself, and give an error.
-     * 
-     * NOT IMPLEMENTED: Function to generate the form and any errors associated with it.
-     *                  Errors will use Bootstrap alerts.
      */
+     
+    //- Get theh data
     $fname     = trim(strip_tags($_POST['firstname']));
     $lname     = trim(strip_tags($_POST['lastname']));
     $uname     = trim(strip_tags($_POST['username']));
@@ -38,6 +37,7 @@
         $continue = FALSE;
     }
     
+    //- For checking usernames
     $statement = $db->prepare("SELECT * FROM `users`");
     $statement->execute();
     
@@ -62,6 +62,7 @@
         $continue = FALSE;
     }
     
+    //- For checking emails
     $statement = $db->prepare('SELECT * FROM `users`;');
     $result = $statement->execute();
     

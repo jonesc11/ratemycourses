@@ -39,8 +39,10 @@
     else
         header ('Location: /createmajor?e=s');
     
-    $createParam = array('name' => $majorname, 'school' => $schoolname, 'schoolid' => $schoolid, 'major' => $major);
-    $result = createMajor($createParam);
+    if ($_SESSION['user']['permissions'] >= 1) {
+        $createParam = array('name' => $majorname, 'school' => $schoolname, 'schoolid' => $schoolid, 'major' => $major);
+        $result = createMajor($createParam);
+    }
     
     if ($result === TRUE)
         header ('Location: /createmajor?s=' . $schoolid);

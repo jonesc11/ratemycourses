@@ -39,8 +39,10 @@
     else
         header ('Location: /createcourse?e=n');
     
-    $createParam = array('coursenum' => $coursenum, 'major' => $major, 'coursename' => $coursename, 'schoolid' => $schoolid);
-    $result = createCourse($createParam);
+    if ($_SESSION['user']['permissions'] >= 1) {
+        $createParam = array('coursenum' => $coursenum, 'major' => $major, 'coursename' => $coursename, 'schoolid' => $schoolid);
+        $result = createCourse($createParam);
+    }
     
     if ($result === TRUE)
         header ('Location: /createcourse?s=' . $_POST['school']);
