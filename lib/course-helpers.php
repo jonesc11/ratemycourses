@@ -190,17 +190,8 @@
             while ($comment = $statementGetComments->fetch()) {
                 $commentids[] = $comment['id'];
                 
-                $statementGetVotes = $db->prepare("SELECT * FROM `votes` WHERE `commentid` = :commentid");
-                $statementGetVotes->execute(array(':commentid' => $comment['id']));
-                $voteids = array();
-                
-                while ($vote = $statementGetVotes->fetch())
-                    $voteids[] = $vote['id'];
-                
-                foreach ($voteids as $id) {
-                    $statementDelVotes = $db->prepare("DELETE FROM `votes` WHERE `id` = :id");
-                    $statementDelVotes->execute(array(':id' => $id));
-                }
+                $statementDelVotes = $db->prepare("DELETE FROM `ratings` WHERE `id` = :id");
+                $statementDelVotes->execute(array(':id' => $comment['ratingid']));
             }
             
             foreach ($commentids as $id) {
@@ -367,18 +358,9 @@
         
         while ($comment = $statementGetComments->fetch()) {
             $commentids[] = $comment['id'];
-            
-            $statementGetVotes = $db->prepare("SELECT * FROM `votes` WHERE `commentid` = :commentid");
-            $statementGetVotes->execute(array(':commentid' => $comment['id']));
-            $voteids = array();
-            
-            while ($vote = $statementGetVotes->fetch())
-                $voteids[] = $vote['id'];
-            
-            foreach ($voteids as $id) {
-                $statementDelVotes = $db->prepare("DELETE FROM `votes` WHERE `id` = :id");
-                $statementDelVotes->execute(array(':id' => $id));
-            }
+                
+            $statementDelVotes = $db->prepare("DELETE FROM `ratings` WHERE `id` = :id");
+            $statementDelVotes->execute(array(':id' => $comment['ratingid']));
         }
         
         foreach ($commentids as $id) {
