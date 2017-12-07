@@ -13,4 +13,4 @@
     if (isset($_POST['delete']) && $_POST['delete'] == 'Delete School' && isset($_POST['id']) && $_SESSION['user']['permissions'] >= 1)
         deleteSchool($_POST['id']);
     
-    header ('Location: /createschool);
+    header ('Location: /createschool');
