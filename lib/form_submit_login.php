@@ -11,7 +11,7 @@
     //- Get the login stuff
     $ret = login($username, $password);
     if ($ret == true){
-        echo '<script> window.location = "/"; </script>';        
+        echo '<script> window.location ="' . $_SERVER['HTTP_REFERER'] . '"; </script>';        
     }
     else{
         echo genLoginForm(array("error" => "Username and password do not match.", "username" => $username));

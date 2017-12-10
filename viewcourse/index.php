@@ -34,6 +34,9 @@
   <body>
     <?php
       require_once(__DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'resources' . DIRECTORY_SEPARATOR . 'navbar.php');
+      if (isset($_GET['l'])) {
+        echo '<script>$("#login").modal();</script>';
+      }
     ?>
     <div class="container">
       <div class="output-container">

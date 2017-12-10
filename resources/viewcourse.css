@@ -122,6 +122,11 @@ hr {
   margin-left: 10px;
 }
 
+.form-container {
+  display: inline-block;
+  float: right;
+}
+
 @media only screen and (min-width: 950px) {
   .averages-container {
     float: left;

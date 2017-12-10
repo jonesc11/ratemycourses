@@ -216,14 +216,11 @@
                 $ret['content'] .= '<table class="ratings-averages"><th>Easiness:</th><th>Free Time:</th><th>Skippability:</th><th>Interesting:</th>
                 <tr><td>' . number_format($ratings[0],1) . ' / 5</td><td>' . number_format($ratings[1],1) . '/ 5</td><td>' . number_format($ratings[2],1) . '/ 5</td><td>' . number_format($ratings[3],1) . '/ 5</td></tr></table>';
                 $ret['content'] .= '<div class="rating-image-container"><h3>Your Verdict:</h3><img class="rating-image" src="/resources/images/rating'. round($average) . '.jpg" alt="Rating image"/></div></div>';
-//                $ret['content'] .= '<h3>Difficulty:</h3><p>' . number_format($ratings[0],1) . ' / 5</p>';
-//                $ret['content'] .= '<h3>Workload:</h3><p>' . number_format($ratings[1],1) . ' / 5</p>';
-//                $ret['content'] .= '<h3>Attendance:</h3><p>' . number_format($ratings[2],1) . ' / 5</p>';
-//                $ret['content'] .= '<h3>Interesting:</h3><p>' . number_format($ratings[3],1) . ' / 5</p>';
                 
                 //- Counter for paginating.
                 $counter = 0;
-                $ret['content'] .= '<div class="comments"><h2>User Ratings:<a class="btn rating-link" href="/createcomment?c=' . $courseid . '" title="Rate this course">Review this course</a></h2><hr>';
+                $ret['content'] .= '<div class="comments"><h2>User Ratings:';
+                $ret['content'] .= '<form method="POST" action="/lib/form-check-login.php" class="form-container"><input type="submit" class = "btn rating-link" name="rate" value="Rate this course" /><input type="hidden" name="cid" value="' . $courseid . '" /></form></h2><hr>';
                 //- List all comments.
                 foreach ($comments as $comment) {
                     if ($counter >= $offset && $counter < $offset + 25) {
