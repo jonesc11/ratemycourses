@@ -39,6 +39,10 @@ The resources folder contains all of the images that are displayed for each rati
 for the navbar that is included in all pages.
 
 ## Testing the Application
-NEED TO FILL THIS IN
+In order to test this application, import the ratemycourses.sql file into phpMyAdmin. This will import a database with testing data. 
+Feel free to create an account to test the functionality for being logged in.
+In order to test admin functionality, the database has an existing admin account. The credentials for this admin account are:
+username: Admin
+password: Salt1
 
 
