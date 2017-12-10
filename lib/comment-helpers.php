@@ -204,7 +204,7 @@
                 $ret['content']  = '<div id="content">';
                 $ret['content'] .= '<h1>' . $course['major'] . ' ' . $course['coursenum'] . ' - '. $course['coursename'] . '</h1>';
                 $ret['content'] .= '<h2>There are no ratings for this course... yet!</h2>';
-                $ret['content'] .= '<form method="POST" action="/lib/form-check-login.php" class="form-container"><input type="submit" class = "btn rating-link" name="rate" value="Rate this course" /><input type="hidden" name="cid" value="' . $courseid . '" /></form>';
+                $ret['content'] .= '<form method="POST" action="/lib/form-check-login.php" class="form-container2"><input type="submit" class = "btn rating-link" name="rate" value="Rate this course" /><input type="hidden" name="cid" value="' . $courseid . '" /></form>';
                 $ret['content'] .= '<a href="../majors-page.php/?s=' . $course['schoolid'] . '" class="btn return_2">Return to School</a>';
                 $ret['content'] .= '</div>';
             } else {
